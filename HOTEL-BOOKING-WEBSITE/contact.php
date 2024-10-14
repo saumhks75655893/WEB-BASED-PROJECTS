@@ -12,12 +12,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <style>
-    .custom-bg{
+    .custom-bg {
         color: black;
         background-color: var(--teal) !important;
         font-weight: 500 !important;
     }
-    .custom-bg:hover{
+
+    .custom-bg:hover {
         background-color: var(--teal_hover) !important;
         font-weight: 700 !important;
     }
@@ -110,7 +111,7 @@
             </div>
         </div>
 
-
+        <br><br><br>
         <!-- footer -->
         <?php require('include/footer.php') ?>
 </body>

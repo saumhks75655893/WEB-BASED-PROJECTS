@@ -120,6 +120,10 @@
         </div>
     </div>
 
+
+    <!-- footer -->
+    <?php require('include/footer.php') ?>
+
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -155,12 +159,6 @@
         });
     </script>
 
-
-
-
-
-
-    <?php require('include/footer.php') ?>
 </body>
 
 </html>

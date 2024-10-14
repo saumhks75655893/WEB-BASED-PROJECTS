@@ -56,15 +56,9 @@
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3 ">Hotels typically offer a range of facilities to enhance guest comfort and convenience. Common amenities include comfortable rooms with <br> ensuite bathrooms, free Wi-Fi, air conditioning,and flat-screen TVs. Our hotel also provide 24-hour front desk service, on-site dining options such as restaurants or cafes, room service, and fitness centers.</p>
     </div>
-<style>
-    .pop:hover{
-        transform: scale(1.03);
-        transition: all 0.3s;
-        border-color: var(--teal_hover) !important;
-    }
-</style>
+ 
     <!-- facilities -->
-    <div class="container mt-5 my-5">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-lg-4 col-md-5 px-5 my-5">
                 <div class="bg-white shadow border-top border-4 p-4 my-2 pop">
@@ -129,7 +123,8 @@
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                         Tempora molestias accusantium doloremque et excepturi esse nostrum!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, est! Lorem ipsum dolor sit amet.</p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, est! Lorem ipsum dolor sit amet.
+                    </p>
                 </div>
             </div>
         </div>
@@ -137,6 +132,7 @@
 
 
     <!-- footer -->
+     <br>
     <?php require('include/footer.php') ?>
 </body>
 
