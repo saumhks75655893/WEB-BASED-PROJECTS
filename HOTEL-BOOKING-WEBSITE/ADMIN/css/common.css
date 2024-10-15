@@ -1,0 +1,57 @@
+:root {
+    --teal: #2ec1ac;
+    --teal_hover: #279e8c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.h-font {
+    font-family: "Merienda", cursive;
+}
+
+/* for swiper  */
+.swiper {
+    width: 800px;
+    height: 300px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.custom-img {
+    display: block;
+    width: 98vw;
+    height: 80vh;
+    padding: 10px 10px;
+    /* object-fit: cover; */
+    overflow: auto;
+}
+.b-class{
+    /* padding: 5px 0; */
+    position: relative;
+    top: 100px; 
+    transition: scale();
+}
+
+.custom-bg{
+    background-color: var(--teal) !important;
+}
+.my-custom-class:hover{
+   font-weight: bold;
+    /* background-color: var(--teal_hover); */
+    color: var(--teal);
+    text-decoration: underline;
+    /* transition: 1s; */
+}
+.h-line{
+    width: 150px;
+    margin: 0 auto;
+    height: 1.7px;
+}
