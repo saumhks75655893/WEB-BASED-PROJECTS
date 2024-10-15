@@ -104,7 +104,7 @@
                         <button type="reset"
                             class="btn  shadow-none  me-3  custom-bg">CLEAR</button>
                         <button type="submit"
-                            class="btn  shadow-none  me-2 custom-bg ">LOGIN</button>
+                            class="btn  shadow-none  me-2 custom-bg ">SUBMIT</button>
                     </form>
                 </div>
 

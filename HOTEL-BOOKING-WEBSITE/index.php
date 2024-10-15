@@ -183,7 +183,17 @@
                             AC
                         </span>
                     </div>
-                    <!-- rating -->
+                    <!-- Guests-->
+                    <div class="facilities mb-4">
+                        <h6 class="mb-1">Guests</h6>
+                        <span class="badge rounded-pill bg-light text-dark text-wrap">
+                            5 Adults
+                        </span>
+                        <span class="badge rounded-pill bg-light text-dark text-wrap">
+                            2 Children
+                        </span>
+                    </div
+                        <!-- rating -->
                     <div class="rating mb-4">
                         <h6 class="mb-1">Rating</h6>
                         <span class="badges rounded-pill bg-light">
@@ -237,7 +247,17 @@
                             AC
                         </span>
                     </div>
-                    <!-- rating -->
+                    <!-- Guests-->
+                    <div class="facilities mb-4">
+                        <h6 class="mb-1">Guests</h6>
+                        <span class="badge rounded-pill bg-light text-dark text-wrap">
+                            5 Adults
+                        </span>
+                        <span class="badge rounded-pill bg-light text-dark text-wrap">
+                            2 Children
+                        </span>
+                    </div
+                        <!-- rating -->
                     <div class="rating mb-4">
                         <h6 class="mb-1">Rating</h6>
                         <span class="badges rounded-pill bg-light">
@@ -290,6 +310,16 @@
                         </span>
                         <span class="badge rounded-pill bg-light text-dark text-wrap">
                             AC
+                        </span>
+                    </div>
+                    <!-- Guests-->
+                    <div class="facilities mb-4">
+                        <h6 class="mb-1">Guests</h6>
+                        <span class="badge rounded-pill bg-light text-dark text-wrap">
+                            5 Adults
+                        </span>
+                        <span class="badge rounded-pill bg-light text-dark text-wrap">
+                            2 Children
                         </span>
                     </div>
                     <!-- rating -->
