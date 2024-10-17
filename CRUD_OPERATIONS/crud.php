@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD OPERATION</title>
-</head>
-<body>
+<?php
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
+if (isset($_POST['addProduct'])) {
+    echo "<h3>POST Data:</h3>";
+    print_r($_POST);
     
-</body>
-</html>
+    echo "<br><br>";
+
+    echo "<h3>FILES Data:</h3>";
+    print_r($_FILES['image']);
+}
