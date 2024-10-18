@@ -65,7 +65,7 @@ error_reporting(0);
     <?php
 
     if ($_GET['submit']) {
-        $rn = $_GET['roll'];
+        $rn = $_GET['rollno'];
         $sn = $_GET['name'];
         $sc = $_GET['class'];
 

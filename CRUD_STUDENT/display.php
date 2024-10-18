@@ -4,15 +4,26 @@
     table,
     th,
     td {
-        border: 2px solid black;
+        border: 2px solid white;
         padding: 10px;
     }
 
-    th, td{
+    th,
+    td {
         text-align: center;
     }
+
+    thead {
+        background-color: springgreen;
+        color: black;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
     table {
         border-collapse: collapse;
+        color: aquamarine;
+        background-color: black;
     }
 </style>
 <?php
@@ -45,7 +56,7 @@ if ($total != 0) {
                         <td>" . $result['name'] . "</td>
                         <td>" . $result['class'] . "</td>
                         <td><a href='update.php?rn=$result[rollno]&&sn=$result[name]&&sc=$result[class]'> Edit </a></td>
-                        <td>Delete </td>
+                        <td><a href='delete.php?rn=$result[rollno]&&sn=$result[name]&&sc=$result[class]'  onclick='return checkdelete()'>Delete</a></td>
                         </tr>";
     }
 } else {
@@ -54,3 +65,9 @@ if ($total != 0) {
     ?>
 
     </table>
+
+    <script>
+        function checkdelete() {
+            return confirm("Are you sure? Want to delete this record !! ");
+        }
+    </script>
