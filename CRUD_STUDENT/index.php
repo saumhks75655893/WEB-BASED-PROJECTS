@@ -42,7 +42,7 @@ error_reporting(0);
     <!-- form  -->
 
     <div class="rounded border-top p-3 custom-form bg-info my-4">
-        <form class=" px-5 shadow-white" action="" method="GET">
+        <form class=" px-5 shadow-white" action="" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label text-white mb-2 fw-bold">Roll NO</label>
                 <input type="number" name="rollno" class="form-control">
@@ -55,8 +55,12 @@ error_reporting(0);
                 <label class="form-label fw-bold text-white">Class</label>
                 <input type="text" class="form-control" name="class">
             </div>
-            <button type="submit" name="submit" class="btn btn-success fw-bold shadow">Submit</button>
-            <button type="clear" name"clear" class="btn btn-warning fw-bold text-danger shadow">Clear</button>
+            <div class="mb-3">
+            <label class="form-label fw-bold text-white">Student Image </label>
+                <input type="file" class="form-control" name="image">
+            </div>
+            <button type="submit" name="submit" class="btn btn-success fw-bold shadow" value="">Submit</button>
+            <button type="clear" name"clear" class="btn btn-warning fw-bold text-danger shadow" value="upload file">Clear</button>
         </form>
     </div>
 
@@ -65,13 +69,17 @@ error_reporting(0);
     <!-- insert code with validation -->
     <?php
 
-    $rn = $_GET['rollno'];
-    $sn = $_GET['name'];
-    $sc = $_GET['class'];
+    $rn = $_POST['rollno'];
+    $sn = $_POST['name'];
+    $sc = $_POST['class'];
+    $filename = $_FILES["image"]["name"];
+    $temfilename = $_FILES["image"]["tmp_name"];
+    $folder = "student/" . $filename;
+    move_uploaded_file($temfilename, $folder);
 
 
-    if (($rn != "") && ($sn != "") && ($sc != "")) {
-        $query = "INSERT INTO STUDENT VALUES('$rn', '$sn ', '$sc')";
+    if (($rn != "") && ($sn != "") && ($sc != "") && ($folder != "")) {
+        $query = "INSERT INTO STUDENT VALUES('$rn', '$sn ', '$sc','$folder')";
         $data = mysqli_query($con, $query);
 
         if ($data) {

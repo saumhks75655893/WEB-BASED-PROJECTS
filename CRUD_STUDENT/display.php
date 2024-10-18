@@ -42,6 +42,7 @@ if ($total != 0) {
 
         <thead>
             <th>Roll No</th>
+            <th>Image</th>
             <th>Name </th>
             <th>Class</th>
             <th colspan="2">Operations</th>
@@ -53,6 +54,7 @@ if ($total != 0) {
     while ($result = mysqli_fetch_assoc($data)) {
         echo  "<tr>
                         <td> " . $result['rollno'] . "</td>
+                        <td><a href='$result[imgsource]'> <img src='" . $result['imgsource'] . "'  height='100' width='100'/></a></td>
                         <td>" . $result['name'] . "</td>
                         <td>" . $result['class'] . "</td>
                         <td><a href='update.php?rn=$result[rollno]&&sn=$result[name]&&sc=$result[class]'> Edit </a></td>
