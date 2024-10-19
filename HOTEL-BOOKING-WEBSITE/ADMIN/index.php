@@ -1,5 +1,12 @@
 <?php
-    require('inc/db_config.php')
+require('inc/essentials.php');
+require('inc/db_config.php');
+
+session_start(); 
+if((isset($_SESSION['adminlogin']) && $_SESSION['adminlogin']==true))
+{
+   redirect('dashboard.php'); 
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +31,7 @@
 <body class="bg-light">
 
     <div class="form-design border shadow text-center rounded overflow-hidden">
-        <form method="POST">
+        <form action="" method="POST">
             <h4 class="bg-dark h-font text-white p-3 mb-4">ADMIN LOGIN PANEL</h4>
 
             <div class="p-4">
@@ -43,7 +50,24 @@
 
     </div>
 
+    <?php
+    if (isset($_POST['login'])) {
+        $frm_data = filteration($_POST);
 
+        $query = "SELECT * FROM `admin_panel` WHERE `admin_id`=? and `admin_pass`=? ";
+        $values = [$frm_data['admin_id'], $frm_data['admin_pass']];
+
+        $res = select($query, $values, "ss");
+        if ($res->num_rows == 1) {
+            $row = mysqli_fetch_assoc($res);
+            $_SESSION['adminlogin'] = true; 
+            $_SESSION['adminId']=$row['sr_no']; 
+            redirect('dashboard.php'); 
+        } else {
+            alert('error', 'Login failed - Invalid credentials ! ');
+        }
+    }
+    ?>
 
     <?php require('inc/scripts.php') ?>
 </body>
