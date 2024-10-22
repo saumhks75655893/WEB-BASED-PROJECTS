@@ -19,4 +19,26 @@
         // Append the element to the body
         document.body.append(element);
     }
+
+    // each tag stuck for the moment the link is click and not moved to another link
+    let navbar = document.getElementById('dashboard-menu');
+    let a_tabs = navbar.getElementsByTagName('a');
+
+
+    function setActive() {
+
+
+        for (let i = 0; i < a_tabs.length; i++) {
+            let file = a_tabs[i].href.split('/').pop();
+            let file_name = file.split('.')[0];
+            if (document.location.href.indexOf(file_name) >= 0) {
+                a_tabs[i].classList.add('active');
+            }
+        }
+
+    }
+
+    // Call the function
+    setActive();
+    
 </script>

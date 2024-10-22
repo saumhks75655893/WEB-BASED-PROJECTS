@@ -38,7 +38,7 @@
     <!-- facilities -->
     <div class="container mt-3">
         <div class="row">
-            <!-- left side -->
+            <!-- left side(location/ and some links) -->
             <div class="col-lg-6 col-md-5 px-5 my-3">
                 <!-- embed the map of the hotel where situated -->
                 <div class="bg-white shadow p-4 my-2 overflow-hidden">
@@ -67,52 +67,70 @@
                     <!-- Follow us  -->
                     <h5 class="mt-4 mb-3">Follow Us</h5>
                     <!-- Twitter -->
-                    <a href="#" class="d-inline-block mb-3">
+                    <a href="https://x.com/" class="d-inline-block mb-3" target="_blank">
                         <i class="bi bi-twitter-x bg-light text-dark fs-6 p-2 ms-4"></i>
                         </span>
                     </a>
                     <!-- INSTAGRAM -->
 
-                    <a href="#" class="d-inline-block mb-3">
+                    <a href="https://www.instagram.com/" class="d-inline-block mb-3" target="_blank">
                         <i class="bi bi-instagram bg-light text-dark text-decoration-none fs-6 p-2 ms-3"></i>
                         </span>
                     </a>
 
                     <!-- Facebook -->
-                    <a href="#" class="d-inline-block mb-3">
+                    <a href="https://www.facebook.com/" class="d-inline-block mb-3" target="_blank">
                         <i class="bi bi-facebook bg-light text-dark text-decoration-none fs-6 p-2 ms-3"></i>
                     </a>
                 </div>
             </div>
-            <!-- right side -->
+            <!--(feedback) right side -->
             <div class="col-lg-6 col-md-5 px-5 my-3">
                 <div class="bg-white shadow p-4 my-2">
                     <h5>Send a Message </h5>
-                    <form action="#">
+                    <form action="#" method="POST">
                         <label class="form-label fw-600 mb-1">Name</label>
-                        <input type="text" class="form-control shadow-none mb-3" placeholder="Your name" required>
+                        <input type="text" name="name" class="form-control shadow-none mb-3" placeholder="Your name" required>
 
                         <label class="form-label fw-600 mb-1">Email</label>
-                        <input type="email" class="form-control shadow-none mb-3" placeholder="Your email-id" required>
+                        <input type="email" name="email" class="form-control shadow-none mb-3" placeholder="Your email-id" required>
 
                         <label class="form-label fw-600 mb-1">Subject</label>
-                        <input type="text" class="form-control shadow-none mb-3" placeholder="Subject for contacting">
+                        <input type="text" name="subject" class="form-control shadow-none mb-3" placeholder="Subject for contacting" required>
 
                         <label class="form-label fw-600 mb-1">Message</label>
-                        <textarea class="form-control shadow-none mb-3" rows="3" placeholder="Write Why are you contacting us in brief. "></textarea>
+                        <textarea name="message" class="form-control shadow-none mb-3" rows="3" placeholder="Write Why are you contacting us in brief. " required></textarea>
 
                         <button type="reset"
-                            class="btn  shadow-none  me-3  custom-bg">CLEAR</button>
+                            name="submit" class="btn  shadow-none  me-3  custom-bg">CLEAR</button>
                         <button type="submit"
-                            class="btn  shadow-none  me-2 custom-bg ">SUBMIT</button>
+                            name="reset" class="btn  shadow-none  me-2 custom-bg ">SUBMIT</button>
                     </form>
                 </div>
 
             </div>
         </div>
 
-        <br><br><br>
+        <!-- backend code -->
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $frm_data = filteration($_POST);
+
+            $query = "INSERT INTO contact_us(`name`, `email`, `subject`, `message`) VALUES (?, ?, ?, ?)";
+            $value = [$frm_data['name'], $frm_data['email'], $frm_data['subject'], $frm_data['message']];
+
+            $data = insert($query, $value, 'ssss');
+
+            if ($data !=  0) {
+                alert("success", "Data inserted ! Successfully !! ");
+            } else {
+                alert("error", "Server down ! Please try again later .. ");
+            }
+        }
+        ?>
+
         <!-- footer -->
+        <br><br><br>
         <?php require('include/footer.php') ?>
 </body>
 

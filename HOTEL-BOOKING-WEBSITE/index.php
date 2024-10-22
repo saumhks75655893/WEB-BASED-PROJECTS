@@ -17,9 +17,9 @@
         top: -180px !important;
         /* margin-left: 20px !important; */
     }
-
+ 
     .pop:hover {
-        transform: scale(1.03);
+        transform: scale(1.01);
         transition: all 0.3s;
         border-color: var(--teal_hover) !important;
     }
@@ -114,24 +114,32 @@
     <?php require('include/header.php') ?>
 
     <!-- hotel home view -->
-    <div class="me-5">
-        <img src="IMAGES/h1.jpg" alt="" class="mx-auto d-block custom-img">
+    <div class="me-5 container-fluid">
+        <img src="IMAGES/rooms/1.jpg" alt="" class="mx-auto d-block custom-img">
         <h2 class="h-font intro">WELCOME TO XYZ HOTEL </h2>
     </div>
     <!-- Availability checking -->
     <form>
-        <div class="container b-class">
+        <div class="container b-class p-4">
             <div class="row">
-                <div class="bg-white shadow border-top border-4 p-4  d-flex mb-5  align-items-center pop">
-                    <div class="col-lg-4 px-5">
+                <div class="bg-white shadow border-top p-4 border-4 d-flex mb-5  align-items-center justify-content-between pop">
+                    <div class="col-lg-2 col-sm-4 col-sm-12">
                         <label class="form-label fw-bold mb-2">Check in</label>
                         <input type="date" class="form-control shadow-none mb-1">
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-2 col-sm-4 col-sm-12">
                         <label class="form-label fw-bold mb-2">Check out</label>
                         <input type="date" class="form-control shadow-none mb-1">
                     </div>
-                    <div class="col-lg-4 ms-5">
+                    <div class="col-lg-2 col-sm-4 col-sm-12">
+                        <label class="form-label fw-bold mb-2">Adult</label>
+                        <input type="number" class="form-control shadow-none mb-1">
+                    </div>
+                    <div class="col-lg-2 col-sm-4 col-sm-12">
+                        <label class="form-label fw-bold mb-2">Children</label>
+                        <input type="number" class="form-control shadow-none mb-1">
+                    </div>
+                    <div class="col-lg-2 col-sm-4 col-sm-12">
                         <button type="submit"
                             class="btn btn-success px-3 py-2 align-items-center justify-content-evenly pin ">Check Availibility</button>
                     </div>
@@ -142,7 +150,7 @@
     </form>
 
     <!-- Our rooms -->
-    <h2 class="mt-1 mb-4 text-center fw-bold h-font">Our Rooms</h2>
+    <h2 class="mb-4 text-center fw-bold h-font">Our Rooms</h2>
     <div class="container">
         <div class="row">
             <!-- room 1 -->
@@ -192,8 +200,8 @@
                         <span class="badge rounded-pill bg-light text-dark text-wrap">
                             2 Children
                         </span>
-                    </div
-                        <!-- rating -->
+                    </div>
+                    <!-- ratings -->
                     <div class="rating mb-4">
                         <h6 class="mb-1">Rating</h6>
                         <span class="badges rounded-pill bg-light">
@@ -205,7 +213,7 @@
                     </div>
                     <div class="d-flex justify-content-evenly p-3">
                         <a href="#" class="btn btn-sm p-2 text-white  custom-bg fw-bold">Book now</a>
-                        <a href="#" class="btn btn-sm p-2 btn-outline-dark  fw-bold">More details</a>
+                        <a href="rooms.php" class="btn btn-sm p-2 btn-outline-dark  fw-bold">More details</a>
                     </div>
                 </div>
             </div>
@@ -256,8 +264,8 @@
                         <span class="badge rounded-pill bg-light text-dark text-wrap">
                             2 Children
                         </span>
-                    </div
-                        <!-- rating -->
+                    </div>
+                    <!-- rating -->
                     <div class="rating mb-4">
                         <h6 class="mb-1">Rating</h6>
                         <span class="badges rounded-pill bg-light">
@@ -517,21 +525,21 @@
                 <!-- Follow us  -->
                 <h5 class="mt-4 mb-3">Follow Us</h5>
                 <!-- Twitter -->
-                <a href="#" class="d-inline-block mb-2 d-flex align-items-center text-decoration-none">
+                <a href="https://x.com/" target="_blank" class="d-inline-block mb-2 d-flex align-items-center text-decoration-none">
                     <i class="bi bi-twitter-x bg-light text-dark fs-6 "></i>
                     <p class="m-0 ms-2  text-dark">twitter</p>
                     </span>
                 </a>
                 <!-- INSTAGRAM -->
 
-                <a href="#" class="d-inline-block  mb-2  d-flex align-items-center text-decoration-none">
+                <a href="https://www.instagram.com/" target="_blank" class="d-inline-block  mb-2  d-flex align-items-center text-decoration-none">
                     <i class="bi bi-instagram bg-light text-dark text-decoration-none fs-6 "></i>
                     <p class="m-0 ms-2  text-dark">Instagram</p>
                     </span>
                 </a>
 
                 <!-- Facebook -->
-                <a href="#" class="d-inline-block mb-3 d-flex align-items-center text-decoration-none">
+                <a href="https://www.facebook.com/" target="_blank" class="d-inline-block mb-3 d-flex align-items-center text-decoration-none">
                     <i class="bi bi-facebook bg-light text-dark text-decoration-none fs-6"></i>
                     <p class="m-0 ms-2  text-dark">Facebook</p>
                 </a>

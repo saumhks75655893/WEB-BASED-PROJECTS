@@ -33,25 +33,35 @@ input[type=number]::-webkit-outer-spin-button {
     /* object-fit: cover; */
     overflow: auto;
 }
-.b-class{
+
+.b-class {
     /* padding: 5px 0; */
     position: relative;
-    top: 100px; 
+    top: 100px;
     transition: scale();
 }
 
-.custom-bg{
+.custom-bg {
     background-color: var(--teal) !important;
 }
-.my-custom-class:hover{
-   font-weight: bold;
+
+.my-custom-class:hover {
+    font-weight: bold;
     /* background-color: var(--teal_hover); */
     color: var(--teal);
     text-decoration: underline;
     /* transition: 1s; */
 }
-.h-line{
+
+.h-line {
     width: 150px;
     margin: 0 auto;
     height: 1.7px;
+}
+
+
+.custom-alert {
+    position: fixed;
+    top: 80px;
+    right: 25px;
 }

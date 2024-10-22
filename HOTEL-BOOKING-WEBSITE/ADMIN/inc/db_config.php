@@ -16,14 +16,17 @@ if (!$conn) {
 function filteration($data)
 {
     foreach ($data as $key => $value) {
-        $data[$key] = trim($value);
-        $data[$key] = stripcslashes($value);
-        $data[$key] = htmlspecialchars($value);
-        $data[$key] = strip_tags($value);
+        $value = trim($value);
+        $value = stripslashes($value);
+        $value = htmlspecialchars($value);
+        $value = strip_tags($value);
+
+        $data[$key] = $value;
     }
     return $data;
 }
-//Insertion function 
+
+//selection(view function) function 
 
 function select($query, $values, $datatype)
 {
@@ -43,8 +46,7 @@ function select($query, $values, $datatype)
     }
 }
 
-// UPdate funtion 
-
+// UPdate Function 
 function update($query, $values, $datatype)
 {
     $conn = $GLOBALS['conn'];
@@ -58,6 +60,24 @@ function update($query, $values, $datatype)
             mysqli_stmt_close($stmt);
             die("Query cannot be executed !! - update ");
         }
+    } else {
+        die("Query cannot be Prepared !! - update ");
+    }
+}
+
+// insert function
+function insert($query, $values, $datatype)
+{
+    $conn = $GLOBALS['conn'];
+    if ($stmt = mysqli_prepare($conn, $query)) {
+        mysqli_stmt_bind_param($stmt, $datatype, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_affected_rows($stmt);
+            return $res;
+        } else {
+            die("Query cannot be executed !! - update ");
+        }
+        mysqli_stmt_close($stmt);
     } else {
         die("Query cannot be Prepared !! - update ");
     }

@@ -1,6 +1,10 @@
+    <?php
+    require('ADMIN/inc/db_config.php');
+    require('ADMIN/inc/essentials.php');
+    ?>
+
     <!-- nar bar  Design  -->
-    <nav
-        class="navbar navbar-expand-lg navbar-light bg-white shadow-light px-4 py-2 shadow-sm sticky-top position-sticky-top">
+    <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light bg-white shadow-light px-4 py-2 shadow-sm sticky-top position-sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand h-font me-5 fw-bold  fs-3 align-items-center" href="index.php">XYZ HOTEL</a>
             <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
@@ -13,7 +17,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-1">
                     <!-- home -->
                     <li class="nav-item">
-                        <a class="nav-link active me-5 my-custom-class" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link me-5 my-custom-class" href="index.php">Home</a>
                     </li>
                     <!-- rooms -->
                     <li class="nav-item">
