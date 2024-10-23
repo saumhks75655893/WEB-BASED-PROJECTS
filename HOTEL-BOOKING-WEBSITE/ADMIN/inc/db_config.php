@@ -82,3 +82,21 @@ function insert($query, $values, $datatype)
         die("Query cannot be Prepared !! - update ");
     }
 }
+
+// delete function
+function delete($query, $values, $datatype)
+{
+    $conn = $GLOBALS['conn'];
+    if ($stmt = mysqli_prepare($conn, $query)) {
+        mysqli_stmt_bind_param($stmt, $datatype, ...$values);
+        if (mysqli_stmt_execute($stmt)) {
+            $res = mysqli_stmt_affected_rows($stmt);
+            return $res;
+        } else {
+            die("Query cannot be executed !! - update ");
+        }
+        mysqli_stmt_close($stmt);
+    } else {
+        die("Query cannot be Prepared !! - update ");
+    }
+}

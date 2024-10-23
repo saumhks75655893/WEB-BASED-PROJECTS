@@ -156,13 +156,14 @@ adminLogin();
                 if (this.responseText == 1) {
                     alert('success', 'Chages saved !! ');
                     get_general();
-              
-                    alert('error', 'NO  } else { changes made !! ');
-                }
 
+                } else {
+                    alert('error', 'NO changes made!!');
             }
 
-            xhr.send('site_title=' + site_title_val + '&site_about=' + site_about_val + '&upd_general');
+        }
+
+        xhr.send('site_title=' + site_title_val + '&site_about=' + site_about_val + '&upd_general');
         }
 
         // shutdown function 
