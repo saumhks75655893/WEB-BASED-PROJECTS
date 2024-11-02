@@ -223,7 +223,6 @@ adminLogin();
                                 ?>
                             </div>
                         </div>
-
                         <!-- description section -->
                         <div class="col-12 mb-3">
                             <label class="form-label fw-bold">Description</label><br>
@@ -248,13 +247,13 @@ adminLogin();
     <?php require('inc/scripts.php') ?>
 
     <script>
+        // adding the room to the database 
         let add_room_form = document.getElementById('addRoomForm');
         add_room_form.addEventListener('submit', function(e) {
             e.preventDefault();
             add_room();
         });
 
-        // adding the room to the database 
         function add_room() {
             let data = new FormData();
             data.append('addRoom', ''); // Corrected the key to match the PHP handler 'addRoom'
@@ -269,13 +268,13 @@ adminLogin();
             // Collecting Features
             let features = [];
             document.querySelectorAll('input[name="features"]:checked').forEach(el => {
-                features.push(el.value);
+                features.push(el.value)
             });
 
             // Collecting Facilities
             let facilities = [];
             document.querySelectorAll('input[name="facilities"]:checked').forEach(el => {
-                facilities.push(el.value);
+                facilities.push(el.value)
             });
 
             // Append to FormData
@@ -286,27 +285,22 @@ adminLogin();
             xhr.open("POST", "AJAX/rooms.php", true);
 
             xhr.onload = function() {
-                let response = JSON.parse(this.responseText); // Parse JSON response
 
                 var myModal = document.getElementById('addRoom');
                 var modal = bootstrap.Modal.getInstance(myModal);
                 modal.hide();
 
-                if (response.status === 1) { // Compare to the status key in the response
-                    alert('success', response.message);
+                if (this.responseText == 1) { // Compare to the status key in the response
+                    alert('success', 'Room added!');
+                    add_room_form.reset();
                     get_all_rooms();
                 } else {
-                    alert('error', response.error || 'server down error !!!! ');
+                    alert('error', 'server down error !!!! ');
                 }
-            };
-
-
-            xhr.onerror = function() {
-                alert('error', 'Could not send request to server.');
-            };
-
+            }
             xhr.send(data);
         }
+
         // fetching the room from the database
         function get_all_rooms() {
             let xhr = new XMLHttpRequest();
@@ -322,10 +316,33 @@ adminLogin();
 
         }
 
-        // Edit room details
-        function edit_details(id) {
-            let edit_room_form = document.getElementById('editRoomForm');
+        // calling get_all_rooms() function 
+        window.onload = function() {
+            get_all_rooms();
+        }
+        // function for status toggle
+        function toggle_status(id, val) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "AJAX/rooms.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
+            xhr.onload = function() {
+                if (this.responseText == 1) {
+                    alert('success', 'Status toggled !');
+                    get_all_rooms();
+                } else {
+                    alert('error', 'Status not toggled ! ')
+                }
+
+            }
+            xhr.send('toggle_status=' + id + '&value=' + val)
+        }
+
+        // edit room
+
+        let edit_room_form = document.getElementById('editRoomForm');
+
+        function edit_details(id) {
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "AJAX/rooms.php", true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -334,59 +351,57 @@ adminLogin();
                 let data = JSON.parse(this.responseText);
                 edit_room_form.elements['name'].value = data.roomdata.name;
                 edit_room_form.elements['area'].value = data.roomdata.area;
-                edit_room_form.elements['price'].value = data.roomdata.price;
-                edit_room_form.elements['quantity'].value = data.roomdata.quantity;
                 edit_room_form.elements['adults'].value = data.roomdata.adults;
                 edit_room_form.elements['children'].value = data.roomdata.children;
+                edit_room_form.elements['price'].value = data.roomdata.price;
+                edit_room_form.elements['quantity'].value = data.roomdata.quantity;
                 edit_room_form.elements['description'].value = data.roomdata.description;
                 edit_room_form.elements['room_id'].value = data.roomdata.id;
 
-                //    features
-                edit_room_form.elements['features'].forEach(el => {
-                    if (data.features.includes(Number(el.value))) {
-                        el.checked = true;
-                    }
-                })
-
-                //    facilities
                 edit_room_form.elements['facilities'].forEach(el => {
                     if (data.facilities.includes(Number(el.value))) {
                         el.checked = true;
                     }
                 })
+
+                edit_room_form.elements['features'].forEach(el => {
+                    if (data.features.includes(Number(el.value))) {
+                        el.checked = true;
+                    }
+                })
             }
-
-            xhr.send('get_rooms=' + id);
+            xhr.send('get_room=' + id);
         }
+        // submit_edit_
 
-        let edit_room_form = document.getElementById('editRoomForm');
-        add_room_form.addEventListener('submit', function(e) {
+        edit_room_form = document.getElementById('editRoomForm');
+        edit_room_form.addEventListener('submit', function(e) {
             e.preventDefault();
-            edit_submit_room();
+            submit_edit_room();
         });
 
-        function edit_submit_room() {
+        function submit_edit_room() {
             let data = new FormData();
             data.append('editRoom', ''); // Corrected the key to match the PHP handler 'addRoom'
-            data.append('room_id', edit_room_form.elements['room_id'].value); // Corrected the key to match the PHP handler 'addRoom'
-            data.append('name', edit_submit_room.elements['name'].value);
-            data.append('area', edit_submit_room.elements['area'].value);
-            data.append('adults', edit_submit_room.elements['adults'].value);
-            data.append('children', edit_submit_room.elements['children'].value);
-            data.append('price', edit_submit_room.elements['price'].value);
-            data.append('quantity', edit_submit_room.elements['quantity'].value);
-            data.append('description', edit_submit_room.elements['description'].value);
+            data.append('room_id', edit_room_form.elements['room_id'].value); 
+            data.append('name', edit_room_form.elements['name'].value);
+            data.append('area', edit_room_form.elements['area'].value);
+            data.append('adults', edit_room_form.elements['adults'].value);
+            data.append('children', edit_room_form.elements['children'].value);
+            data.append('price', edit_room_form.elements['price'].value);
+            data.append('quantity', edit_room_form.elements['quantity'].value);
+            data.append('description', edit_room_form.elements['description'].value);
 
             // Collecting Features
             let features = [];
-            document.querySelectorAll('input[name="features"]:checked').forEach(el => {
-                features.push(el.value);
+            edit_room_form.querySelectorAll('input[name="features"]:checked').forEach(el => {
+                features.push(el.value)
             });
 
             // Collecting Facilities
             let facilities = [];
-            document.querySelectorAll('input[name="facilities"]:checked').forEach(el => {
-                facilities.push(el.value);
+            edit_room_form.querySelectorAll('input[name="facilities"]:checked').forEach(el => {
+                facilities.push(el.value)
             });
 
             // Append to FormData
@@ -397,28 +412,22 @@ adminLogin();
             xhr.open("POST", "AJAX/rooms.php", true);
 
             xhr.onload = function() {
-                let response = JSON.parse(this.responseText); // Parse JSON response
 
                 var myModal = document.getElementById('editRoom');
                 var modal = bootstrap.Modal.getInstance(myModal);
                 modal.hide();
 
-                if (response.status === 1) { // Compare to the status key in the response
-                    alert('success',response.message || 'Rooms data edited !!!! ');
-                    edit_room_form.reset(); 
+                if (this.responseText == 1) { // Compare to the status key in the response
+                    alert('success', 'Room data edited!');
+                    edit_room_form.reset();
                     get_all_rooms();
                 } else {
-                    alert('error', response.error || 'server down error !!!! ');
+                    alert('error', 'server down error !!!! ');
                 }
-            };
-
-
-            xhr.onerror = function() {
-                alert('error', 'Could not send request to server.');
-            };
-
+            }
             xhr.send(data);
         }
+        window.edit_details = edit_details; 
     </script>
 </body>
 

@@ -34,8 +34,7 @@ if (isset($_POST['addRoom'])) {
         mysqli_stmt_close($stmt);
     } else {
         $flag = 0;
-        echo json_encode(['status' => 0, 'error' => 'Failed to insert facilities']);
-        exit();
+        die('query cannot be prepared - insert ! ');
     }
 
     // Insert features
@@ -49,15 +48,14 @@ if (isset($_POST['addRoom'])) {
         mysqli_stmt_close($stmt);
     } else {
         $flag = 0;
-        echo json_encode(['status' => 0, 'error' => 'Failed to insert features']);
-        exit();
+        die("Some error occurred!");
     }
 
     // Output result based on flag
-    if ($flag == 1) {
-        echo json_encode(['status' => 1, 'message' => 'Room added successfully']);
+    if ($flag) {
+        echo 1;
     } else {
-        echo json_encode(['status' => 0, 'error' => 'Failed to add room']);
+        echo 0;
     }
 }
 
@@ -70,9 +68,9 @@ if (isset($_POST['get_all_rooms'])) {
     while ($row = mysqli_fetch_assoc($data1)) {
 
         if ($row['status'] == 1) {
-            $status = "<button onclick='toggle_status($row[id],0)' class='btn btn-dark btn-sm shadow-none'> active </button>";
+            $status = "<button  onclick='toggle_status($row[id],0)' class='btn btn-dark btn-sm shadow-none'> active </button>";
         } else {
-            $status = "<button onclick='toggle_status($row[id],1)' class='btn btn-warning btn-sm shadow-none'> Inactive </button>";
+            $status = "<button onclick='toggle_status($row[id],1)' class='btn btn-warning btn-sm shadow-none'> inactive </button>";
         }
 
 
@@ -92,11 +90,11 @@ if (isset($_POST['get_all_rooms'])) {
             <td>₹$row[price] </td>
             <td style='padding-left:35px;'> $row[quantity] </td>
             <td> $status </td>
-            <td> 
-                <button type='button' onclick='edit_details($row[id])' class='btn btn-warning shadow-none btn-sm my-2 text-right' data-bs-toggle='modal' data-bs-target='#editRoom'>
-                    <i class='bi bi-pencil-square me-2'></i>Edit
-                </button>
-            </td>
+            <td>
+            <button type='button' onclick='edit_details($row[id])' class='btn btn-danger btn-sm my-2 text-right' data-bs-toggle='modal' data-bs-target='#editRoom'>
+                  <i class='bi bi-pencil-square'></i></i>edit
+            </button>
+             </td>
         </tr>";
         $i++;
     }
@@ -104,93 +102,71 @@ if (isset($_POST['get_all_rooms'])) {
 }
 
 // edit room
-if (isset($_POST['get_rooms'])) {
+if (isset($_POST['get_room'])) {
     $frm_data = filteration($_POST);
 
-    // Correct column name for room ID
-    $room_id = $frm_data['get_rooms'];
+    $res1 = select("SELECT * FROM `rooms` WHERE `id`=?", [$frm_data['get_room']], 'i');
+    $res2 = select("SELECT * FROM `room_features` WHERE `room_id`=?", [$frm_data['get_room']], 'i');
+    $res3 = select("SELECT * FROM `room_facilities` WHERE `room_id`=?", [$frm_data['get_room']], 'i');
 
-    // Fetch room details
-    $res1 = select("SELECT * FROM `rooms` WHERE `id`=?", [$room_id], 'i');
-    $res2 = select("SELECT * FROM `room_features` WHERE `room_id`=?", [$room_id], 'i');
-    $res3 = select("SELECT * FROM `room_facilities` WHERE `room_id`=?", [$room_id], 'i');
-
-    // Fetch single room data
     $roomdata = mysqli_fetch_assoc($res1);
-
-    // Fetch features
     $features = [];
+    $facilities = [];
+
     if (mysqli_num_rows($res2) > 0) {
         while ($row = mysqli_fetch_assoc($res2)) {
             array_push($features, $row['features_id']);
         }
     }
 
-    // Fetch facilities
-    $facilities = [];
-    if (mysqli_num_rows($res3) > 0) {  // Corrected: Check $res3, not $res2
+    if (mysqli_num_rows($res3) > 0) {
         while ($row = mysqli_fetch_assoc($res3)) {
             array_push($facilities, $row['facilities_id']);
         }
     }
 
-    // Combine room data, features, and facilities into one array
-    $data = [
-        "roomdata" => $roomdata,
-        "features" => $features,
-        "facilities" => $facilities
-    ];
+    $data = ["roomdata" => $roomdata, "features" => $features, "facilities" => $facilities];
+    $data = json_encode($data);
 
-    // Encode the array to JSON
-    echo json_encode($data);
+    echo $data;
 }
 
-// submit edited room 
 if (isset($_POST['editRoom'])) {
-    $features = filteration(json_decode($_POST['features']));  // Correct handling for features
-    $facilities = filteration(json_decode($_POST['facilities']));  // Correct handling for facilities
+    $features = filteration(json_decode($_POST['features'], true));  // Correct handling for features
+    $facilities = filteration(json_decode($_POST['facilities'],true));  // Correct handling for facilities
     $frm_data = filteration($_POST);
+
     $flag = 0;
 
+    $query1 = "UPDATE `rooms` SET `name`=?,`area`=?,`price`=?,
+    `quantity`=?,`adults`=?,`children`=?,`description`=?,`status`=? WHERE  `id`=?";
 
-    $q1 = "UPDATE `rooms` `name`=?,`area`=?,`price`=?,`quantity`=?,`adults`=?,`children`=?,
-     `description`=?,`status`=? WHERE SET `id`='?'";
-    $values = [
-        $frm_data['name'],
-        $frm_data['area'],
-        $frm_data['price'],
-        $frm_data['quantity'],
-        $frm_data['adults'],
-        $frm_data['children'],
-        $frm_data['description'],
-        $frm_data['room_id']
-    ];
+    $values = [$frm_data['name'], $frm_data['area'], $frm_data['price'], $frm_data['quantity'], $frm_data['adults'], $frm_data['children'], $frm_data['description'], $frm_data['room_id']];
 
-    if (update($q1, $values, 'siiiiisi')) {
+    if (update($query1, $values, 'siiiiisi')) {
         $flag = 1;
     }
 
     $del_features = delete("DELETE FROM `room_features` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
     $del_facilities = delete("DELETE FROM `room_facilities` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
 
-
     if (!($del_features && $del_facilities)) {
         $flag = 0;
     }
+
     // Insert facilities
     $query2 = "INSERT INTO `room_facilities`(`room_id`, `facilities_id`) VALUES (?,?)";
 
     if ($stmt = mysqli_prepare($conn, $query2)) {
         foreach ($facilities as $f) {
-            mysqli_stmt_bind_param($stmt, 'ii', $room_id, $f);
+            mysqli_stmt_bind_param($stmt, 'ii', $frm_data['room_id'], $f);
             mysqli_stmt_execute($stmt);
         }
         $flag = 1;
         mysqli_stmt_close($stmt);
     } else {
         $flag = 0;
-        echo json_encode(['status' => 0, 'error' => 'Failed to insert facilities']);
-        exit();
+        die('query cannot be prepared - insert ! ');
     }
 
     // Insert features
@@ -198,22 +174,21 @@ if (isset($_POST['editRoom'])) {
 
     if ($stmt = mysqli_prepare($conn, $query3)) {
         foreach ($features as $f) {  // Using $features here
-            mysqli_stmt_bind_param($stmt, 'ii', $room_id, $f);
+            mysqli_stmt_bind_param($stmt, 'ii', $frm_data['room_id'], $f);
             mysqli_stmt_execute($stmt);
         }
         $flag = 1;
         mysqli_stmt_close($stmt);
     } else {
         $flag = 0;
-        echo json_encode(['status' => 0, 'error' => 'Failed to insert features']);
-        exit();
+        die("Some error occurred!");
     }
 
     // Output result based on flag
-    if ($flag == 1) {
-        echo json_encode(['status' => 1, 'message' => 'Room added successfully']);
+    if ($flag) {
+        echo 1;
     } else {
-        echo json_encode(['status' => 0, 'error' => 'Failed to add room']);
+        echo 0;
     }
 }
 // for toggle_status the active and inactive button
