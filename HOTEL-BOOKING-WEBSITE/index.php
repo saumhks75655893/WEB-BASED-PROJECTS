@@ -17,11 +17,35 @@
         top: -180px !important;
         /* margin-left: 20px !important; */
     }
- 
+
     .pop:hover {
         transform: scale(1.01);
         transition: all 0.3s;
         border-color: var(--teal_hover) !important;
+    }
+
+    @media screen and (max-width: 200px) {
+
+        /* Stack elements vertically */
+        .d-flex {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .col-lg-2,
+        .col-sm-4,
+        .col-sm-12 {
+            width: 100%;
+            /* Ensure full width on small screens */
+            padding: 5px 0;
+            /* Add some spacing between fields */
+        }
+
+        /* Align the submit button to take full width */
+        .btn {
+            width: 100%;
+            padding: 10px;
+        }
     }
 
     .pin {
@@ -119,33 +143,30 @@
         <h2 class="h-font intro">WELCOME TO XYZ HOTEL </h2>
     </div>
     <!-- Availability checking -->
-    <form>
-        <div class="container b-class p-4">
-            <div class="row">
-                <div class="bg-white shadow border-top p-4 border-4 d-flex mb-5  align-items-center justify-content-between pop">
-                    <div class="col-lg-2 col-sm-4 col-sm-12">
-                        <label class="form-label fw-bold mb-2">Check in</label>
-                        <input type="date" class="form-control shadow-none mb-1">
-                    </div>
-                    <div class="col-lg-2 col-sm-4 col-sm-12">
-                        <label class="form-label fw-bold mb-2">Check out</label>
-                        <input type="date" class="form-control shadow-none mb-1">
-                    </div>
-                    <div class="col-lg-2 col-sm-4 col-sm-12">
-                        <label class="form-label fw-bold mb-2">Adult</label>
-                        <input type="number" class="form-control shadow-none mb-1">
-                    </div>
-                    <div class="col-lg-2 col-sm-4 col-sm-12">
-                        <label class="form-label fw-bold mb-2">Children</label>
-                        <input type="number" class="form-control shadow-none mb-1">
-                    </div>
-                    <div class="col-lg-2 col-sm-4 col-sm-12">
-                        <button type="submit"
-                            class="btn btn-success px-3 py-2 align-items-center justify-content-evenly pin ">Check Availibility</button>
-                    </div>
+    <form class="mb-4">
+        <div class="row">
+            <div class="d-flex align-items-center justify-content-between bg-light shadow border p-sm-4">
+                <div class="col-lg-2 col-md-4 col-sm-12  mb-3">
+                    <label class="form-label fw-bold mb-2">Check in</label>
+                    <input type="date" class="form-control shadow-none mb-1">
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <label class="form-label fw-bold mb-2">Check out</label>
+                    <input type="date" class="form-control shadow-none mb-1">
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <label class="form-label fw-bold mb-2">Adult</label>
+                    <input type="number" class="form-control shadow-none mb-1">
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <label class="form-label fw-bold mb-2">Children</label>
+                    <input type="number" class="form-control shadow-none mb-1">
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-12">
+                    <button type="submit"
+                        class="btn btn-success px-3 py-2 align-items-center justify-content-evenly pin">Check Availibility</button>
                 </div>
             </div>
-        </div>
         </div>
     </form>
 
