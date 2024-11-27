@@ -4,7 +4,7 @@
 
 
 <script>
-    function alert(type, msg) {
+    function alert(type, msg, position = 'body') {
         // Determine the Bootstrap class based on the alert type (success or error)
         let bs_class = (type === 'success') ? 'alert-success' : 'alert-danger';
 
@@ -17,7 +17,12 @@
                             </div>`;
 
         // Append the element to the body
-        document.body.append(element);
+        if (position == "body") {
+            document.body.append(element);
+        }
+        else{
+            document.getElementById(position).appendChild(element); 
+        }
     }
 
     // each tag stuck for the moment the link is click and not moved to another link
@@ -40,5 +45,4 @@
 
     // Call the function
     setActive();
-    
 </script>

@@ -232,14 +232,60 @@ adminLogin();
                         <input type="hidden" name='room_id'>
                         <!-- modal footer -->
                         <div class="modal-footer">
-                            <button type="reset" onclick="site_title.value = general_data.site_title , about_title.value = general_data.about" class="btn text-secondary outline-none border-none" data-bs-dismiss="modal">reset</button>
-                            <button type="submit" class="btn btn-dark">submit</button>
+                            <button type="reset" onclick="site_title.value = general_data.site_title , about_title.value = general_data.about" class="btn text-secondary outline-none border-none" data-bs-dismiss="modal">close</button>
+                            <button type="submit" class="btn btn-dark">Edit</button>
                         </div>
                     </div>
                 </div>
 
             </form>
 
+        </div>
+    </div>
+
+    <!-- Manage room image modal -->
+
+    <div class="modal fade" id="Room-images" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Room Name</h5>
+                    <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- for alert  -->
+                    <div id="img_alert">
+
+                    </div>
+                    <!-- modal form -->
+                    <div class="border-bottom border-3 pb-3 mb-3">
+                        <form id="add_image_form">
+                            <label class="form-label fw-bold">Add image</label>
+                            <input type="file" name="image" id="" accept=".jpg, .jpeg, .png, .webp" class="form-control shadow-none mb-3" required>
+                            <button class="btn btn-info shadow-none outline-none fw-bold text-dark">Add</button>
+                            <input type="hidden" name='room_id'>
+                        </form>
+                    </div>
+                    <!-- image table -->
+                    <div class="table-responsive-lg bg-dark text-white border-top border-3" style="height: 350px; overflow-y:scroll;">
+                        <table class="table table-hover border-5 ">
+                            <thead>
+                                <tr class="bg-dark text-light sticky-top">
+                                    <th scope="col" style="width: 60%;">Image</th>
+                                    <th scope="col">Thumb</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="room-image-data">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 
@@ -340,7 +386,7 @@ adminLogin();
 
         // edit room
 
-        let edit_room_form = document.getElementById('editRoomForm');
+        let editRoomForm = document.getElementById('editRoomForm');
 
         function edit_details(id) {
             let xhr = new XMLHttpRequest();
@@ -349,22 +395,22 @@ adminLogin();
 
             xhr.onload = function() {
                 let data = JSON.parse(this.responseText);
-                edit_room_form.elements['name'].value = data.roomdata.name;
-                edit_room_form.elements['area'].value = data.roomdata.area;
-                edit_room_form.elements['adults'].value = data.roomdata.adults;
-                edit_room_form.elements['children'].value = data.roomdata.children;
-                edit_room_form.elements['price'].value = data.roomdata.price;
-                edit_room_form.elements['quantity'].value = data.roomdata.quantity;
-                edit_room_form.elements['description'].value = data.roomdata.description;
-                edit_room_form.elements['room_id'].value = data.roomdata.id;
+                editRoomForm.elements['name'].value = data.roomdata.name;
+                editRoomForm.elements['area'].value = data.roomdata.area;
+                editRoomForm.elements['adults'].value = data.roomdata.adults;
+                editRoomForm.elements['children'].value = data.roomdata.children;
+                editRoomForm.elements['price'].value = data.roomdata.price;
+                editRoomForm.elements['quantity'].value = data.roomdata.quantity;
+                editRoomForm.elements['description'].value = data.roomdata.description;
+                editRoomForm.elements['room_id'].value = data.roomdata.id;
 
-                edit_room_form.elements['facilities'].forEach(el => {
+                editRoomForm.elements['facilities'].forEach(el => {
                     if (data.facilities.includes(Number(el.value))) {
                         el.checked = true;
                     }
                 })
 
-                edit_room_form.elements['features'].forEach(el => {
+                editRoomForm.elements['features'].forEach(el => {
                     if (data.features.includes(Number(el.value))) {
                         el.checked = true;
                     }
@@ -374,8 +420,8 @@ adminLogin();
         }
         // submit_edit_
 
-        edit_room_form = document.getElementById('editRoomForm');
-        edit_room_form.addEventListener('submit', function(e) {
+        editRoomForm = document.getElementById('editRoomForm');
+        editRoomForm.addEventListener('submit', function(e) {
             e.preventDefault();
             submit_edit_room();
         });
@@ -383,24 +429,24 @@ adminLogin();
         function submit_edit_room() {
             let data = new FormData();
             data.append('editRoom', ''); // Corrected the key to match the PHP handler 'addRoom'
-            data.append('room_id', edit_room_form.elements['room_id'].value); 
-            data.append('name', edit_room_form.elements['name'].value);
-            data.append('area', edit_room_form.elements['area'].value);
-            data.append('adults', edit_room_form.elements['adults'].value);
-            data.append('children', edit_room_form.elements['children'].value);
-            data.append('price', edit_room_form.elements['price'].value);
-            data.append('quantity', edit_room_form.elements['quantity'].value);
-            data.append('description', edit_room_form.elements['description'].value);
+            data.append('room_id', editRoomForm.elements['room_id'].value);
+            data.append('name', editRoomForm.elements['name'].value);
+            data.append('area', editRoomForm.elements['area'].value);
+            data.append('adults', editRoomForm.elements['adults'].value);
+            data.append('children', editRoomForm.elements['children'].value);
+            data.append('price', editRoomForm.elements['price'].value);
+            data.append('quantity', editRoomForm.elements['quantity'].value);
+            data.append('description', editRoomForm.elements['description'].value);
 
             // Collecting Features
             let features = [];
-            edit_room_form.querySelectorAll('input[name="features"]:checked').forEach(el => {
+            editRoomForm.querySelectorAll('input[name="features"]:checked').forEach(el => {
                 features.push(el.value)
             });
 
             // Collecting Facilities
             let facilities = [];
-            edit_room_form.querySelectorAll('input[name="facilities"]:checked').forEach(el => {
+            editRoomForm.querySelectorAll('input[name="facilities"]:checked').forEach(el => {
                 facilities.push(el.value)
             });
 
@@ -419,7 +465,7 @@ adminLogin();
 
                 if (this.responseText == 1) { // Compare to the status key in the response
                     alert('success', 'Room data edited!');
-                    edit_room_form.reset();
+                    editRoomForm.reset();
                     get_all_rooms();
                 } else {
                     alert('error', 'server down error !!!! ');
@@ -427,7 +473,83 @@ adminLogin();
             }
             xhr.send(data);
         }
-        window.edit_details = edit_details; 
+        window.edit_details = edit_details;
+
+        // room image management
+        let add_image_form = document.getElementById("add_image_form");
+
+        add_image_form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            addImage();
+        })
+
+        function addImage() {
+            let data = new FormData();
+            data.append('image', add_image_form.elements['image'].files[0]);
+            data.append('room_id', add_image_form.elements['room_id'].value);
+            data.append('addImage', '');
+
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "AJAX/rooms.php", true);
+
+            xhr.onload = function() {
+                console.log(this.responseText);
+                if (this.responseText === 'inv_img') {
+                    alert('error', 'Only jpg, jpeg, webp or png image allowed', 'img_alert');
+                } else if (this.responseText === 'inv_size') {
+                    alert('error', 'Image should be less than 2MB!', 'img_alert')
+                } else if (this.responseText === 'upd_failed') {
+                    alert('error', 'Image upload failed, server down!', 'img_alert');
+                } else {
+                    alert('success', 'Image upload successfully', 'img_alert');
+                    room_images(add_image_form.elements['room_id'].value, document.querySelector("#Room-images .modal-title").innerText)
+                    add_image_form.reset();
+                }
+            }
+            xhr.send(data);
+        }
+
+        function room_images(id, rname) {
+            document.querySelector("#Room-images .modal-title").innerText = rname;
+            add_image_form.elements['room_id'].value = id;
+            add_image_form.elements['image'].value = '';
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "AJAX/rooms.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function() {
+                document.getElementById('room-image-data').innerHTML = this.responseText;
+
+            }
+            xhr.send('get_room_images=' + id);
+
+        }
+
+        // function for remove image
+        function rem_img(img_id, room_id) {
+            let data = new FormData();
+            data.append('image_id', img_id);
+            data.append('room_id', room_id);
+            data.append('rem_image', '');
+
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "AJAX/rooms.php", true);
+
+            xhr.onload = function() {
+                console.log(this.responseText);
+                if (this.responseText == 1) {
+                    alert('success', 'Image deleted successfully', 'img_alert');
+                    room_images(room_id, document.querySelector("#Room-images .modal-title").innerText)
+
+                } else {
+                    alert('error', 'Image removal failed !','img_alert');
+                }
+            }
+            xhr.send(data);
+        }
     </script>
 </body>
 

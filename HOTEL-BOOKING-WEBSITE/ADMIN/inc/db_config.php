@@ -25,7 +25,13 @@ function filteration($data)
     }
     return $data;
 }
-
+// SELECT ALL
+function selectAll($table)
+{
+    $conn = $GLOBALS['conn']; 
+    $res = mysqli_query($conn, "SELECT * FROM $table"); 
+    return $res; 
+}
 //selection(view function) function 
 
 function select($query, $values, $datatype)

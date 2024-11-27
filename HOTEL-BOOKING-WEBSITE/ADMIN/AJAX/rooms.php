@@ -92,7 +92,10 @@ if (isset($_POST['get_all_rooms'])) {
             <td> $status </td>
             <td>
             <button type='button' onclick='edit_details($row[id])' class='btn btn-danger btn-sm my-2 text-right' data-bs-toggle='modal' data-bs-target='#editRoom'>
-                  <i class='bi bi-pencil-square'></i></i>edit
+                  <i class='bi bi-pencil-square'></i></i>
+            </button>
+            <button type='button' onclick=\"room_images($row[id],'$row[name]')\" class='btn btn-info btn-sm my-2 text-right' data-bs-toggle='modal' data-bs-target='#Room-images'>
+                  <i class='bi bi-images'></i></i>
             </button>
              </td>
         </tr>";
@@ -101,7 +104,7 @@ if (isset($_POST['get_all_rooms'])) {
     echo $data;
 }
 
-// edit room
+// edit room - fetch
 if (isset($_POST['get_room'])) {
     $frm_data = filteration($_POST);
 
@@ -131,15 +134,16 @@ if (isset($_POST['get_room'])) {
     echo $data;
 }
 
+// after fetch - edit room
 if (isset($_POST['editRoom'])) {
     $features = filteration(json_decode($_POST['features'], true));  // Correct handling for features
-    $facilities = filteration(json_decode($_POST['facilities'],true));  // Correct handling for facilities
+    $facilities = filteration(json_decode($_POST['facilities'], true));  // Correct handling for facilities
     $frm_data = filteration($_POST);
 
     $flag = 0;
 
     $query1 = "UPDATE `rooms` SET `name`=?,`area`=?,`price`=?,
-    `quantity`=?,`adults`=?,`children`=?,`description`=?,`status`=? WHERE  `id`=?";
+    `quantity`=?,`adults`=?,`children`=?,`description`=? WHERE  `id`=?";
 
     $values = [$frm_data['name'], $frm_data['area'], $frm_data['price'], $frm_data['quantity'], $frm_data['adults'], $frm_data['children'], $frm_data['description'], $frm_data['room_id']];
 
@@ -202,5 +206,67 @@ if (isset($_POST['toggle_status'])) {
         echo 1;
     } else {
         echo 0;
+    }
+}
+
+// image upload and shown 
+
+if (isset($_POST['addImage'])) {
+    $frm_data = filteration($_POST);
+    $img_r = uploadImage($_FILES['image'], ROOMS_FOLDER);
+
+    if ($img_r == 'inv_img') {
+        echo $img_r;
+    } else if ($img_r == 'inv_size') {
+        echo $img_r;
+    } else if ($img_r == 'upd_failed') {
+        echo $img_r;
+    } else {
+        $query = "INSERT INTO `room_images`(`room_id`, `image`) VALUES (?,?)";
+        $values = [$frm_data['room_id'], $img_r];
+        $res = insert($query, $values, 'is');
+        echo $res;
+    }
+}
+
+// shown on the window
+if (isset($_POST['get_room_images'])) {
+    $frm_data = filteration($_POST);
+    $res = select("SELECT * FROM `room_images` WHERE `room_id`=?",[$frm_data['get_room_images']],'i'); 
+
+    $path = ROOM_IMG_PATH; 
+
+    while($row = mysqli_fetch_assoc($res))
+    {
+        echo<<<data
+            <tr class='align-middle'>
+            <td><img src='$path$row[image]' class='img-fluid'></td>
+            <td>thumb</td>
+            <td>
+            <button onclick='rem_img($row[sr_no],$row[room_id])' class='btn btn-danger btn-sm border border-1'> 
+                <i class='bi bi-trash'></i>
+            </button>
+            </td>
+            </tr>
+        data;
+    }
+
+ 
+}
+
+// image removal
+if(isset($_POST['rem_img']))
+{
+    $frm_data = filteration($_POST); 
+    $values = [$frm_data['img_id'], $frm_data['room_id']]; 
+    $pre_q = "SELECT * FROM `rooms_image` WHERE `sr_no`=? AND `room_id`=?";
+    $res = select($pre_q,$values, 'i'); 
+    $img = mysqli_fetch_assoc($res); 
+
+    if(deleteImage($img['image'],ROOMS_FOLDER))
+    {
+        $q = "DELETE FROM `room_images` WHERE `sr_no`=? AND `room_id`=?"; 
+        $res = delete($q, $values, 'ii'); 
+        echo $res;
     }
 }
