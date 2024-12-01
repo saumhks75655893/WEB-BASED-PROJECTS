@@ -136,8 +136,8 @@
 
 
                             <div class="col-md-6">
-                                <label class="form-label fw-bold mb-2">Picture</label>
-                                <input type="file" name="picture" accept=".jpg, .jpeg, .png, .webp" class="form-control shadow-none mb-3" required>
+                                <label class="form-label fw-bold mb-2">Profile</label>
+                                <input type="file" name="profile" accept=".jpg, .jpeg, .png, .webp" class="form-control shadow-none mb-3" required>
                             </div>
 
                             <div class="col-md-12">

@@ -7,6 +7,7 @@ define('ROOM_IMG_PATH', SITE_URL . 'IMAGES/rooms/');
 // backend uploads process needs this
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/WEB-BASED-PROJECTS/HOTEL-BOOKING-WEBSITE/IMAGES/');
 define('ROOMS_FOLDER', 'rooms/');
+define('USERS_FOLDER','users/'); 
 
 
 
@@ -69,5 +70,29 @@ function deleteImage($image, $folder)
         return true;
     } else {
         return false;
+    }
+}
+
+
+// upload user image 
+
+
+function uploadUserImage($image, $folder)
+{
+    $valid_mime = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp'];
+    $img_mime = $image['type'];
+
+    if (!in_array($img_mime, $valid_mime)) {
+        return 'inv_img'; // invalid image mime or format
+    } else {
+        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $rname = 'IMG_' . random_int(11111, 99999) . ".$ext";
+        $img_path = UPLOAD_IMAGE_PATH . USERS_FOLDER . $rname;
+
+        if (move_uploaded_file($image['tmp_name'], $img_path)) {
+            return $rname;
+        } else {
+            return 'upd_failed';
+        }
     }
 }
