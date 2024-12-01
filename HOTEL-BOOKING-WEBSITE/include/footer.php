@@ -3,9 +3,9 @@
     <div class="row no-gutters">
         <div class="col-12 col-md-4  p-4">
             <h5 class="h-font fw-bold fs-3 mb-3">XYZ HOTEL</h5>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo recusandae
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, exercitationem?
-                iure sed soluta necessitatibus sapiente perspiciatis totam sint, odit provident.</p>
+            <p>XYZ Hotel, established by Himanshu Kumar in 1997, has been providing quality hospitality for
+                over two decades. Known for its comfortable accommodations and excellent service, it has become
+                a trusted destination for travelers</p>
         </div>
         <div class="col-12 col-md-4  p-4">
             <h5 class="fs-3 mb-3">Links </h5>
@@ -52,9 +52,9 @@
         for (let i = 0; i < a_tabs.length; i++) {
             let file = a_tabs[i].href.split('/').pop();
             let file_name = file.split('.')[0];
-            console.log(file_name); 
+            console.log(file_name);
             if (document.location.href.indexOf(file_name) >= 0) {
-                a_tabs[i].classList.add('fw-bold','fs-5');
+                a_tabs[i].classList.add('fw-bold', 'fs-5');
             }
         }
 
@@ -62,4 +62,9 @@
 
     // Call the function
     setActive();
+
+
+    // Register form 
+    let register_form = document.getElementById('register-form'); 
+    
 </script>

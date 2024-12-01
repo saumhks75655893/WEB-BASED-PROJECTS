@@ -140,7 +140,7 @@
     <!-- hotel home view -->
     <div class="me-5 container-fluid">
         <img src="IMAGES/rooms/1.jpg" alt="" class="mx-auto d-block custom-img">
-        <h2 class="h-font intro">WELCOME TO XYZ HOTEL </h2>
+        <h2 class="h-font intro">WELCOME TO KING HOTEL </h2>
     </div>
     <!-- Availability checking -->
     <form class="mb-4">
@@ -174,340 +174,237 @@
     <h2 class="mb-4 text-center fw-bold h-font">Our Rooms</h2>
     <div class="container">
         <div class="row">
-            <!-- room 1 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="bg-white shadow border-top border-4 p-3 rounded custom-card ">
-                    <img src="IMAGES/rooms/1.jpg" class="w-100">
-                    <h5 class="mb-2 mt-3">Simple Room</h5>
-                    <h6 class="mb-3"> ₹500 per night</h6>
-                    <!-- features -->
-                    <div class="features mb-4">
-                        <h6 class="mb-1">Features</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            2 Room
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            1 Bathroom
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            1 Balcony
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            3 Balcony
-                        </span>
-                    </div>
-                    <!-- facilities-->
-                    <div class="facilities mb-4">
-                        <h6 class="mb-1">Facilities</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            Wifi
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            Television
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            Room heater
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            AC
-                        </span>
-                    </div>
-                    <!-- Guests-->
-                    <div class="facilities mb-4">
-                        <h6 class="mb-1">Guests</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            5 Adults
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            2 Children
-                        </span>
-                    </div>
-                    <!-- ratings -->
-                    <div class="rating mb-4">
-                        <h6 class="mb-1">Rating</h6>
-                        <span class="badges rounded-pill bg-light">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                        </span>
-                    </div>
-                    <div class="d-flex justify-content-evenly p-3">
-                        <a href="#" class="btn btn-sm p-2 text-white  custom-bg fw-bold">Book now</a>
-                        <a href="rooms.php" class="btn btn-sm p-2 btn-outline-dark  fw-bold">More details</a>
-                    </div>
-                </div>
-            </div>
-            <!-- room 2 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="bg-white shadow border-top border-4 p-3 rounded custom-card ">
-                    <img src="IMAGES/rooms/1.jpg" class="w-100">
-                    <h5 class="mb-2 mt-3">Simple Room</h5>
-                    <h6 class="mb-3"> ₹500 per night</h6>
-                    <!-- features -->
-                    <div class="features mb-4">
-                        <h6 class="mb-1">Features</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            2 Room
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            1 Bathroom
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            1 Balcony
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            3 Balcony
-                        </span>
-                    </div>
-                    <!-- facilities-->
-                    <div class="facilities mb-4">
-                        <h6 class="mb-1">Facilities</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            Wifi
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            Television
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            Room heater
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            AC
-                        </span>
-                    </div>
-                    <!-- Guests-->
-                    <div class="facilities mb-4">
-                        <h6 class="mb-1">Guests</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            5 Adults
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            2 Children
-                        </span>
-                    </div>
-                    <!-- rating -->
-                    <div class="rating mb-4">
-                        <h6 class="mb-1">Rating</h6>
-                        <span class="badges rounded-pill bg-light">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                        </span>
-                    </div>
-                    <div class="d-flex justify-content-evenly p-3">
-                        <a href="#" class="btn btn-sm p-2 text-white  custom-bg fw-bold">Book now</a>
-                        <a href="#" class="btn btn-sm p-2 btn-outline-dark  fw-bold">More details</a>
-                    </div>
-                </div>
-            </div>
 
-            <!-- room 3 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="bg-white shadow border-top border-4 p-3 rounded  custom-card">
-                    <img src="IMAGES/rooms/1.jpg" class="w-100">
-                    <h5 class="mb-2 mt-3">Simple Room</h5>
-                    <h6 class="mb-3"> ₹500 per night</h6>
-                    <!-- features -->
-                    <div class="features mb-4">
-                        <h6 class="mb-1">Features</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            2 Room
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            1 Bathroom
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            1 Balcony
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            3 Balcony
-                        </span>
-                    </div>
-                    <!-- facilities-->
-                    <div class="facilities mb-4">
-                        <h6 class="mb-1">Facilities</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            Wifi
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            Television
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            Room heater
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            AC
-                        </span>
-                    </div>
-                    <!-- Guests-->
-                    <div class="facilities mb-4">
-                        <h6 class="mb-1">Guests</h6>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            5 Adults
-                        </span>
-                        <span class="badge rounded-pill bg-light text-dark text-wrap">
-                            2 Children
-                        </span>
-                    </div>
-                    <!-- rating -->
-                    <div class="rating mb-4">
-                        <h6 class="mb-1">Rating</h6>
-                        <span class="badges rounded-pill bg-light">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                        </span>
-                    </div>
-                    <div class="d-flex justify-content-evenly p-3">
-                        <a href="#" class="btn btn-sm p-2 text-white  custom-bg fw-bold">Book now</a>
-                        <a href="#" class="btn btn-sm p-2 btn-outline-dark  fw-bold">More details</a>
-                    </div>
-                </div>
-            </div>
+            <?php
+            $room_res = select("SELECT * FROM `rooms` WHERE `status`=? AND `removed`=? ORDER BY `id` DESC LIMIT 3", [1, 0], 'ii');
 
-            <!-- Button -->
+
+
+            // $features_data = "";
+            while ($room_data = mysqli_fetch_assoc($room_res)) {
+
+                //  get features of the rooms
+                $fea_q = mysqli_query($conn, "SELECT f.name from `features` f INNER JOIN `room_features` rfea ON f.id = rfea.features_id WHERE rfea.room_id = '$room_data[id]'");
+
+                $features_data = "";
+                while ($fea_row = mysqli_fetch_assoc($fea_q)) {
+                    $features_data .= "<span class='badge rounded-pill bg-light text-dark text-wrap'>
+                        $fea_row[name]
+                    </span>";
+                }
+
+                //  get facilities of the rooms
+                $faci_q = mysqli_query($conn, "SELECT f.name from `facilities` f INNER JOIN `room_facilities` rfaci ON f.id = rfaci.facilities_id WHERE rfaci.room_id = '$room_data[id]'");
+
+                $facilities_data = "";
+                while ($faci_row = mysqli_fetch_assoc($faci_q)) {
+                    $facilities_data .= "<span class='badge rounded-pill bg-light text-dark text-wrap'>
+                            $faci_row[name]
+                        </span>";
+                }
+
+                // get thumbnail of the room
+
+                $room_thumb = ROOM_IMG_PATH . "thumbnail.jpg";
+                $thumb_q = mysqli_query($conn, "SELECT * FROM `room_images` where `room_id`= '$room_data[id]' AND `thumb`='1'");
+                if (mysqli_num_rows($thumb_q) > 0) {
+                    $thumb_res = mysqli_fetch_assoc($thumb_q);
+                    $room_thumb = ROOM_IMG_PATH . $thumb_res['image'];
+                }
+                // print room card
+                echo <<<data
+                <div class="col-lg-4 col-md-6">
+                        <div class="bg-white shadow border-top border-4 p-3 rounded custom-card ">
+                            <img src=$room_thumb class="w-100">
+                            <h5 class="mb-2 mt-3"></h5>
+                            <h6 class="mb-3">$room_data[name] </h6>
+                            <!-- features -->
+                           <h6 class="mb-1">Features</h6>
+                            <span class="badge-lg rounded-pill bg-light text-dark text-wrap">
+                                    $features_data
+                            </span>
+                            
+                            <!-- facilities-->
+
+                            <h6 class="mb-1 mt-2">Facilities</h6>
+                            <span class="badge-lg rounded-pill bg-light text-dark text-wrap">
+                                $facilities_data
+                            </span>
+                            
+                            <!-- Guests-->
+                            <div class="facilities mb-4">
+                               <h6 class="mb-1 mt-2">Guests</h6>
+                                <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                    $room_data[adults] Adults
+                                </span>
+                                <span class="badge rounded-pill bg-light text-dark text-wrap mb-sm-3">
+                                    $room_data[children] Children
+                                </span>
+                            </div>
+                            <!-- ratings -->
+                            <div class="rating mb-4">
+                                <h6 class="mb-1">Rating</h6>
+                                <span class="badges rounded-pill bg-light">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                </span>
+                            </div>
+                            <div class="d-flex justify-content-evenly p-3">
+                                <a href="#" class="btn btn-sm p-2 text-white  custom-bg fw-bold">Book now</a>
+                                <a href="room_details.php?id=$room_data[id]" class="btn btn-sm p-2 btn-outline-dark  fw-bold">More details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                data;
+            }
+            ?>
             <div class="col-lg-12 col-md-12 text-center mt-5 mb-5">
-                <a href="#" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2 ">More Rooms -> </a>
+                <a href="rooms.php" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2"target="_blank">More Rooms -> </a>
             </div>
         </div>
-    </div>
 
-    <!-- Our facilities -->
-    <h2 class="mt-1 mb-4 text-center fw-bold h-font">Our Facilites</h2>
-    <div class="container">
-        <div class="row justify-content-evenly mb-5">
-            <div class="col-lg-2 col-md-2 text-center shadow rounded mb-4 my-4 py-4  custom-card">
-                <img src="IMAGES/facilities/wifi.svg" width="80px">
-                <h5>Wifi</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center shadow rounded mb-4 my-4 py-4  custom-card">
-                <img src="IMAGES/facilities/flattv.svg" width="80px">
-                <h5>Television</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center shadow rounded mb-4 my-4 py-4 custom-card">
-                <img src="IMAGES/facilities/ac.svg" width="80px">
-                <h5>AC</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center shadow rounded mb-4 my-4 py-4  custom-card">
-                <img src="IMAGES/facilities/heater.svg" width="80px">
-                <h5>Room heater</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center shadow rounded mb-4 my-4 py-4  custom-card">
-                <img src="IMAGES/facilities/rooms.svg" width="80px">
-                <h5>Rooms</h5>
-            </div>
-            <div class="col-lg-12 col-md-12 text-center mt-5 mb-5">
-                <a href="#" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2 ">More Facilities -> </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- testimonials -->
-    <h2 class="mt-1 mb-4 text-center fw-bold h-font">Our Testimonials</h2>
-
-    <div class="container mt-4">
-        <div class="swiper swiper-testimonial swiper-custom">
-            <div class="swiper-wrapper">
-                <!-- 1. -->
-                <div class="swiper-slide bg-white shadow  p-4">
-                    <div class="profile d-flex align-items-center mb-3">
-                        <img src="IMAGES/facilities/star.svg" width="30px">
-                        <h5 class="m-0 ms-3">Random user 1</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
-                    <div class="rating">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                    </div>
+        <!-- Our facilities -->
+        <h2 class="mt-1 mb-4 text-center fw-bold h-font">Our Facilites</h2>
+        <div class="container">
+            <div class="row justify-content-evenly mb-5">
+                <div class="col-lg-2 col-md-2 text-center shadow rounded mb-4 my-4 py-4  custom-card">
+                    <img src="IMAGES/facilities/wifi.svg" width="80px">
+                    <h5>Wifi</h5>
                 </div>
-                <!-- 2 -->
-                <div class="swiper-slide bg-white shadow  p-4">
-                    <div class="profile d-flex align-items-center mb-3">
-                        <img src="IMAGES/facilities/star.svg" width="30px">
-                        <h5 class="m-0 ms-3">Random user 1</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
-                    <div class="rating">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                    </div>
+                <div class="col-lg-2 col-md-2 text-center shadow rounded mb-4 my-4 py-4  custom-card">
+                    <img src="IMAGES/facilities/flattv.svg" width="80px">
+                    <h5>Television</h5>
                 </div>
-                <!-- 3 -->
-                <div class="swiper-slide bg-white   p-4">
-                    <div class="profile d-flex align-items-center mb-3">
-                        <img src="IMAGES/facilities/star.svg" width="30px">
-                        <h5 class="m-0 ms-3">Random user 1</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
-                    <div class="rating">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                    </div>
+                <div class="col-lg-2 col-md-2 text-center shadow rounded mb-4 my-4 py-4 custom-card">
+                    <img src="IMAGES/facilities/ac.svg" width="80px">
+                    <h5>AC</h5>
                 </div>
-                <!-- 4 -->
-                <div class="swiper-slide bg-white   p-4">
-                    <div class="profile d-flex align-items-center mb-3">
-                        <img src="IMAGES/facilities/star.svg" width="30px">
-                        <h5 class="m-0 ms-3">Random user 1</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
-                    <div class="rating">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                    </div>
+                <div class="col-lg-2 col-md-2 text-center shadow rounded mb-4 my-4 py-4  custom-card">
+                    <img src="IMAGES/facilities/heater.svg" width="80px">
+                    <h5>Room heater</h5>
+                </div>
+                <div class="col-lg-2 col-md-2 text-center shadow rounded mb-4 my-4 py-4  custom-card">
+                    <img src="IMAGES/facilities/rooms.svg" width="80px">
+                    <h5>Rooms</h5>
+                </div>
+                <div class="col-lg-12 col-md-12 text-center mt-5 mb-5">
+                    <a href="facilities.php" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2 ">More Facilities -> </a>
                 </div>
             </div>
         </div>
 
-        <!-- Swiper JS -->
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <!-- testimonials -->
+        <h2 class="mt-1 mb-4 text-center fw-bold h-font">Our Testimonials</h2>
 
-        <!-- Initialize Swiper -->
-        <script>
-            var swiper = new Swiper(".swiper-testimonial", {
-                grabCursor: true,
-                loop: true,
-                autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                },
-                effect: "creative",
-                creativeEffect: {
-                    prev: {
-                        shadow: false,
-                        translate: [0, 0, -400],
+        <div class="container mt-4">
+            <div class="swiper swiper-testimonial swiper-custom">
+                <div class="swiper-wrapper">
+                    <!-- 1. -->
+                    <div class="swiper-slide bg-white shadow  p-4">
+                        <div class="profile d-flex align-items-center mb-3">
+                            <img src="IMAGES/facilities/star.svg" width="30px">
+                            <h5 class="m-0 ms-3">Random user 1</h5>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
+                        <div class="rating">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="swiper-slide bg-white shadow  p-4">
+                        <div class="profile d-flex align-items-center mb-3">
+                            <img src="IMAGES/facilities/star.svg" width="30px">
+                            <h5 class="m-0 ms-3">Random user 1</h5>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
+                        <div class="rating">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="swiper-slide bg-white   p-4">
+                        <div class="profile d-flex align-items-center mb-3">
+                            <img src="IMAGES/facilities/star.svg" width="30px">
+                            <h5 class="m-0 ms-3">Random user 1</h5>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
+                        <div class="rating">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+
+                    </div>
+                    <!-- 4 -->
+                    <div class="swiper-slide bg-white   p-4">
+                        <div class="profile d-flex align-items-center mb-3">
+                            <img src="IMAGES/facilities/star.svg" width="30px">
+                            <h5 class="m-0 ms-3">Random user 1</h5>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
+                        <div class="rating">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- know more -->
+                <div class="col-lg-12 col-md-12 text-center mt-2 mb-5">
+                    <a href="about.php" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2 ">Know More </a>
+                </div>
+            </div>
+
+            <!-- Swiper JS -->
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+            <!-- Initialize Swiper -->
+            <script>
+                var swiper = new Swiper(".swiper-testimonial", {
+                    grabCursor: true,
+                    loop: true,
+                    autoplay: {
+                        delay: 2500,
+                        disableOnInteraction: false,
                     },
-                    next: {
-                        translate: ["100%", 0, 0],
+                    effect: "creative",
+                    creativeEffect: {
+                        prev: {
+                            shadow: false,
+                            translate: [0, 0, -400],
+                        },
+                        next: {
+                            translate: ["100%", 0, 0],
+                        },
                     },
-                },
-                // breakpoint: {
-                //     320: {
-                //         slidesPerView: 2,
-                //         spaceBetween: 20,
-                //     },
-                //     530: {
-                //         slidesPerView: 1,
-                //         spaceBetween: 20,
-                //     },
-                //     650: {
-                //         slidesPerView: 3,
-                //         spaceBetween: 20;
-                //     }, 
+                    // breakpoint: {
+                    //     320: {
+                    //         slidesPerView: 2,
+                    //         spaceBetween: 20,
+                    //     },
+                    //     530: {
+                    //         slidesPerView: 1,
+                    //         spaceBetween: 20,
+                    //     },
+                    //     650: {
+                    //         slidesPerView: 3,
+                    //         spaceBetween: 20;
+                    //     }, 
 
-            });
-        </script>
+                });
+            </script>
+
 </body>
 
 <!-- Reach us -->

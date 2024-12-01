@@ -6,7 +6,7 @@
     <!-- nar bar  Design  -->
     <nav id="nav-bar" class="navbar navbar-expand-lg navbar-light bg-white shadow-light px-4 py-2 shadow-sm sticky-top position-sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand h-font me-5 fw-bold  fs-3 align-items-center" href="index.php">XYZ HOTEL</a>
+            <a class="navbar-brand h-font me-5 fw-bold  fs-3 align-items-center" href="index.php">THE KING HOTEL</a>
             <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -97,8 +97,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- registration  form content -->
-                <form action="#">
-
+                <form id="register-form">
                     <!-- header -->
                     <div class="modal-header">
                         <h5 class="modal-title d-flex align-items-center">
@@ -117,13 +116,13 @@
                         <div class="row">
                             <div class="col-md-6 ">
                                 <label class="form-label fw-bold mb-2">Name</label>
-                                <input type="text" class="form-control shadow-none mb-3" placeholder="Your name">
+                                <input type="text" name="name" class="form-control shadow-none mb-3" placeholder="Your name" required>
                             </div>
 
                             <div class="col-md-6 ">
                                 <label class="form-label fw-bold mb-2">Phone No </label>
-                                <input type="number" class="form-control shadow-none mb-3" placeholder="7991861858"
-                                    pattern="[0-9]{10}">
+                                <input type="number" name="phonenum" class="form-control shadow-none mb-3" placeholder="7991861858"
+                                    pattern="[0-9]{10}" required>
                                 <div class="invalid-feedback">
                                     Please provide a valid phone number. It should be greater than 10 numbers.
                                 </div>
@@ -131,25 +130,25 @@
 
                             <div class="col-md-6">
                                 <label class="form-label fw-bold mb-2">Email ID </label>
-                                <input type="email" class="form-control shadow-none mb-3"
-                                    placeholder="hksinha75655893@gmail.com">
+                                <input type="email" name="email" class="form-control shadow-none mb-3"
+                                    placeholder="hksinha75655893@gmail.com" required>
                             </div>
 
 
                             <div class="col-md-6">
                                 <label class="form-label fw-bold mb-2">Picture</label>
-                                <input type="file" class="form-control shadow-none mb-3">
+                                <input type="file" name="picture" accept=".jpg, .jpeg, .png, .webp" class="form-control shadow-none mb-3" required>
                             </div>
 
                             <div class="col-md-12">
                                 <label class="form-label fw-bold mb-3">Address</label>
-                                <textarea class="form-control shadow-none mb-3" rows="3"></textarea>
+                                <textarea class="form-control shadow-none mb-3" rows="3" name="address" pattern="[A-Za-z]{1,32}" required></textarea>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="form-label fw-bold mb-2">Pincode</label>
-                                <input type="number" class="form-control shadow-none mb-3" pattern="[0-9]{6}"
-                                    placeholder="232103">
+                                <input type="number" class="form-control shadow-none mb-3" name="pincode" pattern="[0-9]{6}"
+                                    placeholder="232103"  required>
                                 <div class="invalid-feedback">
                                     Please provide valid pincode.
                                 </div>
@@ -158,26 +157,26 @@
 
                             <div class="col-md-6">
                                 <label class="form-label fw-bold mb-2">Date of birth</label>
-                                <input type="date" class="form-control shadow-none mb-3">
+                                <input type="date" name="dob" class="form-control shadow-none mb-3" required>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="form-label fw-bold mb-2">Password</label>
-                                <input type="Password" class="form-control shadow-none mb-3"
-                                    placeholder="At least 8 characters">
+                                <input type="Password" name="pass" class="form-control shadow-none mb-3"
+                                    placeholder="At least 8 characters" required>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="form-label fw-bold mb-2">Confirm Password</label>
-                                <input type="Password" class="form-control shadow-none mb-3"
-                                    placeholder="Same as password">
+                                <input type="Password" name="cpass" class="form-control shadow-none mb-3"
+                                    placeholder="Same as password" required>
                             </div>
                             <div class="text-center my-1">
                                 <div class="d-flex align-items-center justify-content-start">
                                     <button type="reset"
                                         class="btn btn-warning btn-block shadow-none ms-2 fw-bold me-3 w-50 ">CLEAR</button>
                                     <button type="submit"
-                                        class="btn btn-success btn-block shadow-none  fw-bold me-2 w-50">LOGIN</button>
+                                        class="btn btn-success btn-block shadow-none  fw-bold me-2 w-50">REGISTER</button>
                                 </div>
                             </div>
                         </div>
