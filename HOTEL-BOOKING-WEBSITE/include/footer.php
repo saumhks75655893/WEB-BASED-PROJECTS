@@ -45,6 +45,30 @@
 
 <!-- nav-hover effect -->
 <script>
+    // alert function
+    function alert(type, msg, position = 'body') {
+        // Determine the Bootstrap class based on the alert type (success or error)
+        let bs_class = (type === 'success') ? 'alert-success' : 'alert-danger';
+
+        // Create the alert element
+        let element = document.createElement('div');
+        element.innerHTML = `
+                            <div class="alert ${bs_class} alert-dismissible fade show custom-alert" role="alert">
+                                <strong class="ms-4">${msg}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>`;
+
+        // Append the element to the body
+        if (position == "body") {
+            document.body.append(element);
+            // element.classList.add('custom-alert');
+        }
+        else {
+            document.getElementById(position).appendChild(element);
+        }
+    }
+    setTimeout(alert, 3000);
+
     let navbar = document.getElementById('nav-bar');
     let a_tabs = navbar.getElementsByTagName('a');
 
@@ -83,16 +107,40 @@
         data.append('register', '');
 
 
-        var myModel = document.getElementById('registerModal'); 
-        var modal = bootstrap.Modal.getInstance(myModel); 
-        modal.hide(); 
+        var myModel = document.getElementById('registerModal');
+        var modal = bootstrap.Modal.getInstance(myModel);
+        modal.hide();
 
         let xhr = new XMLHttpRequest();
-        xhr.open("POST", "AJAX/login_register.php", true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.open("POST", "ajax/login_register.php", true);
+        // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-        xhr.onload = function() {
-           
+        xhr.onload = function () {
+            if (this.responseText == 'pass_mismatch') {
+                alert('error', 'Password Mismatch !')
+            }
+            else if (this.responseText == 'email_already') {
+                alert('error', 'Email already registered !')
+            }
+            else if (this.responseText == 'phone_already') {
+                alert('error', 'Phone number already registered !')
+            }
+            else if (this.responseText == 'inv_img') {
+                alert('error', 'Only jpg, jpeg, webp and png images allowed!');
+            }
+            else if (this.responseText == 'upd_failed') {
+                alert('error', 'Image Upload failed!');
+            }
+            else if (this.responseText == 'mail_failed') {
+                alert('error', 'Cannot sent confirmation mail : server down !!');
+            }
+            else if (this.responseText == 'ins_failed') {
+                alert('error', 'Registration failed : server down !!');
+            }
+            else {
+                alert('success', 'Registration Successful, Confirmation link sent to mail!');
+                register_form.reset();
+            }
         }
 
         xhr.send(data);

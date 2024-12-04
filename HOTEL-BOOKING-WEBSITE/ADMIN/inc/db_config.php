@@ -79,13 +79,13 @@ function insert($query, $values, $datatype)
         mysqli_stmt_bind_param($stmt, $datatype, ...$values);
         if (mysqli_stmt_execute($stmt)) {
             $res = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
             return $res;
         } else {
-            die("Query cannot be executed !! - update ");
+            die("Query cannot be executed !! - INSERT ");
         }
-        mysqli_stmt_close($stmt);
     } else {
-        die("Query cannot be Prepared !! - update ");
+        die("Query cannot be Prepared !! - INSERT ");
     }
 }
 
@@ -97,12 +97,12 @@ function delete($query, $values, $datatype)
         mysqli_stmt_bind_param($stmt, $datatype, ...$values);
         if (mysqli_stmt_execute($stmt)) {
             $res = mysqli_stmt_affected_rows($stmt);
+            mysqli_stmt_close($stmt);
             return $res;
         } else {
-            die("Query cannot be executed !! - update ");
+            die("Query cannot be executed !! - delete ");
         }
-        mysqli_stmt_close($stmt);
     } else {
-        die("Query cannot be Prepared !! - update ");
+        die("Query cannot be Prepared !! - delete ");
     }
 }

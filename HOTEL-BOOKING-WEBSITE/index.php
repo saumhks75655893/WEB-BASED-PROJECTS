@@ -64,10 +64,15 @@
 
     .intro {
         position: relative !important;
-        top: -250px !important;
+        top: -390px !important;
+        /* line-height: 100%; */
         text-align: center;
         margin: 0 auto;
-        color: white !important;
+        color: transparent !important;
+        /* opacity:none; */
+        /* border: 1px solid #ffcdb2; */
+        text-shadow: 10px -10px 5px white;
+        
     }
 
     .custom-bg {
@@ -139,8 +144,9 @@
 
     <!-- hotel home view -->
     <div class="me-5 container-fluid">
-        <img src="IMAGES/rooms/1.jpg" alt="" class="mx-auto d-block custom-img">
-        <h2 class="h-font intro">WELCOME TO KING HOTEL </h2>
+        <img src="IMAGES/rooms/2.jpg" height="550px" width="100%" alt="" class="mx-auto d-block ">
+        <h2 class="h-font intro">WELCOME TO The KING HOTEL </h2>
+        <h3 class="h-font intro fs-1">This is not only the hotel but also the sentiment.</h3>
     </div>
     <!-- Availability checking -->
     <form class="mb-4">

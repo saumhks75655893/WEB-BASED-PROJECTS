@@ -153,7 +153,7 @@ if (isset($_POST['editRoom'])) {
         $flag = 1;
     }
 
-    $del_features = delete("DELETE FROM `room_features` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
+    $del_features = delete("DELETE FROM `room_features` WHERE `room_id`=?", [$frm_data['room_id']], "i");
     $del_facilities = delete("DELETE FROM `room_facilities` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
 
     if (!($del_features && $del_facilities)) {
@@ -242,7 +242,7 @@ if (isset($_POST['get_room_images'])) {
         if ($row['thumb'] == 1) {
             $thumb_btn = "<i class='bi bi-check-lg text-light bg-success px-2 py-1 rounded fs-5'></i>";
         } else {
-            $thumb_btn =  "<button onclick='thumb_img($row[sr_no],$row[room_id])' class='btn btn-secondary btn-sm border border-1'> 
+            $thumb_btn = "<button onclick='thumb_img($row[sr_no],$row[room_id])' class='btn btn-secondary btn-sm border border-1'> 
                 <i class='bi bi-check-lg fs-5'></i>
             </button>";
         }

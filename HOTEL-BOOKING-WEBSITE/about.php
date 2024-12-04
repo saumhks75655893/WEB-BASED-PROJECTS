@@ -37,7 +37,7 @@
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3 ">XYZ hotel is a place that provides accommodation for travelers, offering rooms with basic amenities like beds, bathrooms, and sometimes <br> additional services like free Wi-Fi, room service, or on-site dining. Many hotels also offer facilities such as gyms, <br> swimming pools, and meeting rooms, catering to both leisure and business travelers. The goal <br> is to provide a comfortable and convenient stay for guests..</p>
     </div>
-    <?php echo $_SERVER['DOCUMENT_ROOT'] ?>
+    <!-- <?php echo $_SERVER['DOCUMENT_ROOT'] ?> -->
     <!-- facilities -->
     <div class="container mt-5 my-5">
         <div class="row justify-content-between align-items-center">
