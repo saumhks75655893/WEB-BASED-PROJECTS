@@ -2,8 +2,8 @@
 <div class="container-fluid bg-white w-100">
     <div class="row no-gutters">
         <div class="col-12 col-md-4  p-4">
-            <h5 class="h-font fw-bold fs-3 mb-3">XYZ HOTEL</h5>
-            <p>XYZ Hotel, established by Himanshu Kumar in 1997, has been providing quality hospitality for
+            <h5 class="h-font fw-bold fs-3 mb-3">THE KING HOTEL</h5>
+            <p>The King Hotel, established by Himanshu Kumar in 1987, has been providing quality hospitality for
                 over two decades. Known for its comfortable accommodations and excellent service, it has become
                 a trusted destination for travelers</p>
         </div>
@@ -45,50 +45,50 @@
 
 <!-- nav-hover effect -->
 <script>
-    // alert function
-    function alert(type, msg, position = 'body') {
-        // Determine the Bootstrap class based on the alert type (success or error)
-        let bs_class = (type === 'success') ? 'alert-success' : 'alert-danger';
+    // login form
+    let login_form = document.getElementById('login-form');
+    login_form.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-        // Create the alert element
-        let element = document.createElement('div');
-        element.innerHTML = `
-                            <div class="alert ${bs_class} alert-dismissible fade show custom-alert" role="alert">
-                                <strong class="ms-4">${msg}</strong>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>`;
+        let data = new FormData();
 
-        // Append the element to the body
-        if (position == "body") {
-            document.body.append(element);
-            // element.classList.add('custom-alert');
-        }
-        else {
-            document.getElementById(position).appendChild(element);
-        }
-    }
-    setTimeout(alert, 3000);
+        data.append('email_mob', login_form.elements['email_mob'].value);
+        data.append('pass', login_form.elements['pass'].value);
+        data.append('login', '');
 
-    let navbar = document.getElementById('nav-bar');
-    let a_tabs = navbar.getElementsByTagName('a');
 
-    function setActive() {
-        for (let i = 0; i < a_tabs.length; i++) {
-            let file = a_tabs[i].href.split('/').pop();
-            let file_name = file.split('.')[0];
-            console.log(file_name);
-            if (document.location.href.indexOf(file_name) >= 0) {
-                a_tabs[i].classList.add('fw-bold', 'fs-5');
+        var myModel = document.getElementById('loginModal');
+        var modal = bootstrap.Modal.getInstance(myModel);
+        modal.hide();
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "ajax/login_register.php", true);
+        // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onload = function () {
+            if (this.responseText == 'inv_email_mob') {
+                alert('error', 'Invalid email or mobile number!')
+            }
+            else if (this.responseText == 'not_varified') {
+                alert('error', 'Email not verified!')
+            }
+            else if (this.responseText == 'inactive') {
+                alert('error', 'Account freeze or Suspended : Please contact admin!')
+            }
+            else if (this.responseText == 'invalid_pass') {
+                alert('error', 'Invalid Password!');
+            }
+            else {
+                window.location = window.location.pathname;
             }
         }
 
-    }
+        xhr.send(data);
 
-    // Call the function
-    setActive();
+    })
 
 
-    // Register form 
+    //register password
     let register_form = document.getElementById('register-form');
     register_form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -147,4 +147,94 @@
 
 
     })
+
+    // forget form 
+    let forgot_form = document.getElementById('forgot-form');
+    forgot_form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let data = new FormData();
+
+
+        data.append('email', forgot_form.elements['email'].value);
+        data.append('forgot_pass', '');
+
+
+        var myModel = document.getElementById('forgotModal');
+        var modal = bootstrap.Modal.getInstance(myModel);
+        modal.hide();
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "ajax/login_register.php", true);
+        // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onload = function () {
+            if (this.responseText == 'inv_email') {
+                alert('error', 'Invalid email!')
+            }
+            else if (this.responseText == 'not_varified') {
+                alert('error', 'Email not verified:Please Contact to Admin!')
+            }
+            else if (this.responseText == 'inactive') {
+                alert('error', 'Account freeze or Suspended : Please contact admin!')
+            }
+            else if (this.responseText == 'mail_failed') {
+                alert('error', 'Cannot sent email : Sever down !! ');
+            }
+            else if (this.responseText == 'upd_failed') {
+                alert('error', 'Password Reset failed : Server Down !!');
+            }
+            else {
+              alert('success', 'Reset link sent to email!')
+              forgot_form.reset(); 
+            }
+        }
+
+        xhr.send(data);
+
+
+    })
+
+    // alert function
+    function alert(type, msg, position = 'body') {
+        // Determine the Bootstrap class based on the alert type (success or error)
+        let bs_class = (type === 'success') ? 'alert-success' : 'alert-danger';
+
+        // Create the alert element
+        let element = document.createElement('div');
+        element.innerHTML = `
+                            <div class="alert ${bs_class} alert-dismissible fade show custom-alert" role="alert">
+                                <strong class="ms-4">${msg}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>`;
+
+        // Append the element to the body
+        if (position == "body") {
+            document.body.append(element);
+            // element.classList.add('custom-alert');
+        }
+        else {
+            document.getElementById(position).appendChild(element);
+        }
+    }
+
+    let navbar = document.getElementById('nav-bar');
+    let a_tabs = navbar.getElementsByTagName('a');
+
+    function setActive() {
+        for (let i = 0; i < a_tabs.length; i++) {
+            let file = a_tabs[i].href.split('/').pop();
+            let file_name = file.split('.')[0];
+            console.log(file_name);
+            if (document.location.href.indexOf(file_name) >= 0) {
+                a_tabs[i].classList.add('fw-bold', 'fs-5');
+            }
+        }
+
+    }
+
+    // Call the function
+    setActive();
+
+
 </script>

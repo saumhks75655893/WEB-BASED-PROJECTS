@@ -72,7 +72,7 @@
         /* opacity:none; */
         /* border: 1px solid #ffcdb2; */
         text-shadow: 10px -10px 5px white;
-        
+
     }
 
     .custom-bg {
@@ -144,14 +144,15 @@
 
     <!-- hotel home view -->
     <div class="me-5 container-fluid">
-        <img src="IMAGES/rooms/2.jpg" height="550px" width="100%" alt="" class="mx-auto d-block ">
-        <h2 class="h-font intro">WELCOME TO The KING HOTEL </h2>
+        <img src="IMAGES/rooms/2.jpg" height="550px" width="99%" alt="" class="mx-auto d-block ">
+        <h2 class="h-font intro" style="font-size: 70px;">WELCOME TO The KING HOTEL </h2>
         <h3 class="h-font intro fs-1">This is not only the hotel but also the sentiment.</h3>
     </div>
     <!-- Availability checking -->
     <form class="mb-4">
         <div class="row">
-            <div class="d-flex align-items-center justify-content-between bg-light shadow border p-sm-4">
+            <div class="d-flex align-items-center justify-content-between bg-light shadow border p-sm-4"
+                style="width: 90%; position: relative; left: 50px; bottom:80px;">
                 <div class="col-lg-2 col-md-4 col-sm-12  mb-3">
                     <label class="form-label fw-bold mb-2">Check in</label>
                     <input type="date" class="form-control shadow-none mb-1">
@@ -170,7 +171,8 @@
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-12">
                     <button type="submit"
-                        class="btn btn-success px-3 py-2 align-items-center justify-content-evenly pin">Check Availibility</button>
+                        class="btn btn-success px-3 py-2 align-items-center justify-content-evenly pin">Check
+                        Availibility</button>
                 </div>
             </div>
         </div>
@@ -180,6 +182,7 @@
     <h2 class="mb-4 text-center fw-bold h-font">Our Rooms</h2>
     <div class="container">
         <div class="row">
+
 
             <?php
             $room_res = select("SELECT * FROM `rooms` WHERE `status`=? AND `removed`=? ORDER BY `id` DESC LIMIT 3", [1, 0], 'ii');
@@ -210,7 +213,7 @@
                 }
 
                 // get thumbnail of the room
-
+            
                 $room_thumb = ROOM_IMG_PATH . "thumbnail.jpg";
                 $thumb_q = mysqli_query($conn, "SELECT * FROM `room_images` where `room_id`= '$room_data[id]' AND `thumb`='1'");
                 if (mysqli_num_rows($thumb_q) > 0) {
@@ -268,7 +271,8 @@
             }
             ?>
             <div class="col-lg-12 col-md-12 text-center mt-5 mb-5">
-                <a href="rooms.php" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2"target="_blank">More Rooms -> </a>
+                <a href="rooms.php" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2"
+                    target="_blank">More Rooms -> </a>
             </div>
         </div>
 
@@ -297,7 +301,8 @@
                     <h5>Rooms</h5>
                 </div>
                 <div class="col-lg-12 col-md-12 text-center mt-5 mb-5">
-                    <a href="facilities.php" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2 ">More Facilities -> </a>
+                    <a href="facilities.php" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2 ">More
+                        Facilities -> </a>
                 </div>
             </div>
         </div>
@@ -314,7 +319,8 @@
                             <img src="IMAGES/facilities/star.svg" width="30px">
                             <h5 class="m-0 ms-3">Random user 1</h5>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel
+                            repellendus nihil possimus dolorem de aliquid!</p>
                         <div class="rating">
                             <i class="bi bi-star-fill text-warning"></i>
                             <i class="bi bi-star-fill text-warning"></i>
@@ -328,7 +334,8 @@
                             <img src="IMAGES/facilities/star.svg" width="30px">
                             <h5 class="m-0 ms-3">Random user 1</h5>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel
+                            repellendus nihil possimus dolorem de aliquid!</p>
                         <div class="rating">
                             <i class="bi bi-star-fill text-warning"></i>
                             <i class="bi bi-star-fill text-warning"></i>
@@ -342,7 +349,8 @@
                             <img src="IMAGES/facilities/star.svg" width="30px">
                             <h5 class="m-0 ms-3">Random user 1</h5>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel
+                            repellendus nihil possimus dolorem de aliquid!</p>
                         <div class="rating">
                             <i class="bi bi-star-fill text-warning"></i>
                             <i class="bi bi-star-fill text-warning"></i>
@@ -357,7 +365,8 @@
                             <img src="IMAGES/facilities/star.svg" width="30px">
                             <h5 class="m-0 ms-3">Random user 1</h5>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel
+                            repellendus nihil possimus dolorem de aliquid!</p>
                         <div class="rating">
                             <i class="bi bi-star-fill text-warning"></i>
                             <i class="bi bi-star-fill text-warning"></i>
@@ -368,7 +377,8 @@
                 </div>
                 <!-- know more -->
                 <div class="col-lg-12 col-md-12 text-center mt-2 mb-5">
-                    <a href="about.php" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2 ">Know More </a>
+                    <a href="about.php" class="btn btn-success btn-sm btn-outline-dark fw-bold px-4 py-2 ">Know More
+                    </a>
                 </div>
             </div>
 
@@ -420,10 +430,13 @@
         <!-- Address portion -->
         <div class="col-lg-8 col-md-8 mb-5">
             <div class="p-4 mt-3 bg-white shadow mb-lg-0 mb-3 rounded">
-                <iframe class="w-100 rounded mb-4" height="320px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14711.925445286224!2d81.72858533790232!3d22.803154519246682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3987a09f2beeee53%3A0x8e16a10edc999450!2sLalpur%2C%20Madhya%20Pradesh%20484886!5e0!3m2!1sen!2sin!4v1728836174430!5m2!1sen!2sin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe class="w-100 rounded mb-4" height="320px"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14711.925445286224!2d81.72858533790232!3d22.803154519246682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3987a09f2beeee53%3A0x8e16a10edc999450!2sLalpur%2C%20Madhya%20Pradesh%20484886!5e0!3m2!1sen!2sin!4v1728836174430!5m2!1sen!2sin"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <!-- address section -->
                 <h5 class="fw-bold">Address</h5>
-                <a href="https://maps.app.goo.gl/dbLQsF8NKpRZUgqm6" target="_blank" class="d-inling-block text-decoration-none text-dark mb-3">
+                <a href="https://maps.app.goo.gl/dbLQsF8NKpRZUgqm6" target="_blank"
+                    class="d-inling-block text-decoration-none text-dark mb-3">
                     <i class="bi bi-geo-alt"></i>Lalput, Amarkantak, Anuppur, Madhya Pradesh</a>
 
             </div>
@@ -442,28 +455,32 @@
                 <br><br>
                 <!-- email us -->
                 <h5 class="mt-4">Email Us</h5>
-                <a href="mailto: himanshukumar75655893@gmail.com" class="d-inline-block text-decoration-none text-dark mb-3">
+                <a href="mailto: himanshukumar75655893@gmail.com"
+                    class="d-inline-block text-decoration-none text-dark mb-3">
                     <i class="bi bi-envelope me-2"></i>himanshukumar75@gmail.com</a>
 
 
                 <!-- Follow us  -->
                 <h5 class="mt-4 mb-3">Follow Us</h5>
                 <!-- Twitter -->
-                <a href="https://x.com/" target="_blank" class="d-inline-block mb-2 d-flex align-items-center text-decoration-none">
+                <a href="https://x.com/" target="_blank"
+                    class="d-inline-block mb-2 d-flex align-items-center text-decoration-none">
                     <i class="bi bi-twitter-x bg-light text-dark fs-6 "></i>
                     <p class="m-0 ms-2  text-dark">twitter</p>
                     </span>
                 </a>
                 <!-- INSTAGRAM -->
 
-                <a href="https://www.instagram.com/" target="_blank" class="d-inline-block  mb-2  d-flex align-items-center text-decoration-none">
+                <a href="https://www.instagram.com/" target="_blank"
+                    class="d-inline-block  mb-2  d-flex align-items-center text-decoration-none">
                     <i class="bi bi-instagram bg-light text-dark text-decoration-none fs-6 "></i>
                     <p class="m-0 ms-2  text-dark">Instagram</p>
                     </span>
                 </a>
 
                 <!-- Facebook -->
-                <a href="https://www.facebook.com/" target="_blank" class="d-inline-block mb-3 d-flex align-items-center text-decoration-none">
+                <a href="https://www.facebook.com/" target="_blank"
+                    class="d-inline-block mb-3 d-flex align-items-center text-decoration-none">
                     <i class="bi bi-facebook bg-light text-dark text-decoration-none fs-6"></i>
                     <p class="m-0 ms-2  text-dark">Facebook</p>
                 </a>
@@ -472,8 +489,111 @@
     </div>
 </div>
 
+<!-- reset password model -->
+
+<div class="modal fade" id="resetModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- login form content -->
+            <form action="#" id="reset-form">
+
+                <!-- header -->
+                <div class="modal-header">
+                    <h5 class="modal-title d-flex align-items-center">
+                        <i class="bi bi-shield-lock fs-3 me-2"></i>SET A NEW PASSWORD
+                    </h5>
+                    <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <!-- body -->
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">New Password </label>
+                        <input type="password" name="pass" required class="form-control shadow-none">
+                        <input type="hidden" name="email">
+                        <input type="hidden" name="token">
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end">
+                        <button type="button" class="btn btn-warning btn-block shadow-none me-2"
+                            data-bs-dismiss="modal">CANCEL</button>
+
+                        <button type="submit" class="btn btn-success btn-block shadow-none me-3">RESET PASSWORD</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <!-- footer -->
 <br><br><br>
 <?php require('include/footer.php') ?>
+
+<?php
+if (isset($_GET['reset_password'])) {
+    $data = filteration($_GET);
+
+    $t_date = date('Y-m-d');
+
+    $query = select("SELECT * FROM `user_cred` WHERE `email`=? AND `token`=? AND `t_expire`=? LIMIT 1", [$data['email'], $data['token'], $t_date], 'sss');
+
+    if (mysqli_num_rows($query) == 1) {
+        echo <<<showmodal
+            <script>
+                var myModel = document.getElementById('resetModal');
+
+                myModel.querySelector("input[name='email']").value = '$data[email]';
+                myModel.querySelector("input[name='token']").value = '$data[token]';
+
+                var modal = bootstrap.Modal.getOrCreateInstance(myModel);
+                modal.show();
+            </script>
+         showmodal;
+    } else {
+        alert("error", 'Invalid Or Expired link!');
+    }
+}
+?>
+<script>
+    // forget form 
+    let reset_form = document.getElementById('reset-form');
+    reset_form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let data = new FormData();
+
+
+        data.append('email', reset_form.elements['email'].value);
+        data.append('token', reset_form.elements['token'].value);
+        data.append('pass', reset_form.elements['pass'].value);
+        data.append('reset_pass','');
+
+
+        var myModel = document.getElementById('resetModal');
+        var modal = bootstrap.Modal.getInstance(myModel);
+        modal.hide();
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "ajax/login_register.php", true);
+        // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        xhr.onload = function () {
+           if(this.responseText == 'failed'){
+            alert('error','Password Reset Failed!!'); 
+           }else{
+            alert('success','Account Reset Successfully !! '); 
+            reset_form.reset(); 
+           }
+        }
+
+        xhr.send(data);
+
+
+    })
+
+</script>
 
 </html>

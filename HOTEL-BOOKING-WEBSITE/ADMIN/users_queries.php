@@ -43,7 +43,7 @@ if ($_GET['del']) {
     } else {
         $query = "DELETE FROM `contact_us` WHERE `del`=?";
         $value = [$frm_data['del']];
-        $res = delete($query, $value, "i");
+        $res = deleteData($query, $value, 'i');
 
         if ($res) {
             alert('success', 'record deleted successfully !! ');

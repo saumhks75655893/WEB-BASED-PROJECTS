@@ -3,11 +3,18 @@
 // frontend purpose data 
 define('SITE_URL', 'http://localhost/WEB-BASED-PROJECTS/HOTEL-BOOKING-WEBSITE/');
 define('ROOM_IMG_PATH', SITE_URL . 'IMAGES/rooms/');
+define('USER_IMG_PATH',SITE_URL.'IMAGES/users/');
 
 // backend uploads process needs this
 define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/WEB-BASED-PROJECTS/HOTEL-BOOKING-WEBSITE/IMAGES/');
 define('ROOMS_FOLDER', 'rooms/');
 define('USERS_FOLDER', 'users/');
+
+// for the email 
+
+define('USERNAME',"himanshukumar79918618@gmail.com");
+define('PASSWORD',"irgqxvhuobylwxmt"); 
+define('NAME',"Email Verification !! ");
 
 
 
@@ -34,12 +41,22 @@ function redirect($url)
 // alert function 
 function alert($type, $msg)
 {
-    echo <<<alert
-    <div class="alert alert-warning alert-dismissible fade show custom-alert" role="alert">
-    <strong class="ms-4">$msg</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    alert;
+    if($type == 'success'){
+        echo <<<alert
+        <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+        <strong class="ms-4">$msg</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        alert;
+    }
+    else{
+        echo <<<alert
+        <div class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+        <strong class="ms-4">$msg</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        alert;
+    }
 }
 
 function uploadImage($image, $folder)

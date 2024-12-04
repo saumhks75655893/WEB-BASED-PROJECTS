@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php echo "HOTEL BOOKING WEBSITE - HOME" ?>
+        <?php echo "HOTEL BOOKING WEBSITE - CONTACT US" ?>
     </title>
     <?php require('include/links.php') ?>
     <!-- carousel design link  -->

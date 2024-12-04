@@ -90,7 +90,7 @@ function insert($query, $values, $datatype)
 }
 
 // delete function
-function delete($query, $values, $datatype)
+function deleteData($query, $values, $datatype)
 {
     $conn = $GLOBALS['conn'];
     if ($stmt = mysqli_prepare($conn, $query)) {

@@ -63,7 +63,6 @@ input[type=number]::-webkit-outer-spin-button {
     position: fixed;
     top: 80px;
     right: 25px;
-    z-index: 111;
 }
 
 @media screen and (max-width:992px) {

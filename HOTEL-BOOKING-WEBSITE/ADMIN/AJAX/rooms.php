@@ -153,8 +153,8 @@ if (isset($_POST['editRoom'])) {
         $flag = 1;
     }
 
-    $del_features = delete("DELETE FROM `room_features` WHERE `room_id`=?", [$frm_data['room_id']], "i");
-    $del_facilities = delete("DELETE FROM `room_facilities` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
+    $del_features = deleteData("DELETE FROM `room_features` WHERE `room_id`=?", [$frm_data['room_id']], "i");
+    $del_facilities = deleteData("DELETE FROM `room_facilities` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
 
     if (!($del_features && $del_facilities)) {
         $flag = 0;
@@ -270,7 +270,7 @@ if (isset($_POST['rem_image'])) {
 
     if (deleteImage($img['image'], ROOMS_FOLDER)) {
         $q = "DELETE FROM `room_images` WHERE `sr_no`=? AND `room_id`=?";
-        $res = delete($q, $values, 'ii');
+        $res = deleteData($q, $values, 'ii');
         echo $res;
     } else {
         return 0;
@@ -301,10 +301,10 @@ if (isset($_POST['remove_room'])) {
         deleteImage($row['image'], ROOMS_FOLDER);
     }
 
-    $res2 = delete("DELETE FROM `room_images` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
-    $res3 = delete("DELETE FROM `room_features` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
-    $res4 = delete("DELETE FROM `room_facilities` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
-    $res5 = delete("UPDATE `rooms` SET `removed`=?  WHERE `id`=?", [1, $frm_data['room_id']], 'ii');
+    $res2 = deleteData("DELETE FROM `room_images` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
+    $res3 = deleteData("DELETE FROM `room_features` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
+    $res4 = deleteData("DELETE FROM `room_facilities` WHERE `room_id`=?", [$frm_data['room_id']], 'i');
+    $res5 = deleteData("UPDATE `rooms` SET `removed`=?  WHERE `id`=?", [1, $frm_data['room_id']], 'ii');
 
 
     if ($res1 || $res2 || $res3 || $res5) {
