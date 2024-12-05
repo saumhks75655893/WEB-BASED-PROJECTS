@@ -58,11 +58,11 @@ if($setting_r['shutdown']){
                     $path = USER_IMG_PATH;
                     echo <<<data
                         <div class="btn-group">
-                            <button type="button" class="btn btn-warning dropdown-toggle d-flex align-items-center justify-content-space-between" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            <button type="button" class="btn btn-primary dropdown-toggle d-flex align-items-center justify-content-space-between" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                 <img src="$path$_SESSION[uPic]" style="width:30px; height:30px;" class="me-1">
                                 <h6>$_SESSION[uName]</h6>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-lg-end">
+                            <ul class="dropdown-menu dropdown-menu-lg-none">
                                 <li><a class="dropdown-item" href="profile.php">Profile</a></li>
                                 <li><a class="dropdown-item" href="bookings.php">Bookings</a></li>
                                 <li><a class="dropdown-item" href="logout.php">LogOut</a></li>

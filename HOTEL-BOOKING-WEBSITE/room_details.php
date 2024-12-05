@@ -46,6 +46,13 @@
 
     $room_data = mysqli_fetch_assoc($room_res);
 
+
+    // book_now on/off functionality
+    $book_now = "";
+
+    if (!$setting_r['shutdown']) {
+        $book_now = "<a href='#' class='btn btn-sm p-2 text-white  custom-bg fw-bold'>Book now</a>";
+    }
     ?>
     <!-- hotel room view -->
 
@@ -81,7 +88,8 @@
                                 echo "<div class='carousel-item $active_class'>
                                  <img height='350' src='" . ROOM_IMG_PATH . $img_res['image'] . "' class='d-block w-100 rounded'>
                                 </div>";
-                            };
+                            }
+                            ;
                             $active_class = "";
                         } else {
                             echo "<div class='carousel-item active'>
@@ -91,11 +99,13 @@
                         ?>
 
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                        data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+                        data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
@@ -186,7 +196,8 @@
 
                         // Book Room
                         echo <<<book
-                            <a href="#" class="btn btn-sm p-2 text-white  custom-bg fw-bold mb-2 w-100 mt-3">Book now</a>
+                            <br>
+                            $book_now
                         book;
 
 
@@ -215,7 +226,8 @@
                     <img src="IMAGES/facilities/star.svg" width="20px">
                     <h5 class="m-0 ms-3">Random user 1</h5>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus nihil possimus dolorem de aliquid!</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing tates accusamus reprehenderit vel repellendus
+                    nihil possimus dolorem de aliquid!</p>
                 <div class="rating">
                     <i class="bi bi-star-fill text-warning"></i>
                     <i class="bi bi-star-fill text-warning"></i>
@@ -254,11 +266,11 @@
             </div>
         </div>
 
-    <!-- footer -->
-    <br>
-    <?php require('include/footer.php') ?>
+        <!-- footer -->
+        <br>
+        <?php require('include/footer.php') ?>
 
-    <!-- java script  -->
+        <!-- java script  -->
 </body>
 
 </html>

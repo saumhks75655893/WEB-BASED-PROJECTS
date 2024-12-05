@@ -220,8 +220,14 @@
                     $thumb_res = mysqli_fetch_assoc($thumb_q);
                     $room_thumb = ROOM_IMG_PATH . $thumb_res['image'];
                 }
-                // print room card
-                echo <<<data
+                // on/off book now button
+                $book_now = "";
+
+                if (!$setting_r['shutdown']){
+                    $book_now = "<a href='#' class='btn btn-sm p-2 text-white  custom-bg fw-bold'>Book now</a>";
+                }
+                    // print room card
+                    echo <<<data
                 <div class="col-lg-4 col-md-6">
                         <div class="bg-white shadow border-top border-4 p-3 rounded custom-card ">
                             <img src=$room_thumb class="w-100">
@@ -261,7 +267,7 @@
                                 </span>
                             </div>
                             <div class="d-flex justify-content-evenly p-3">
-                                <a href="#" class="btn btn-sm p-2 text-white  custom-bg fw-bold">Book now</a>
+                                $book_now
                                 <a href="room_details.php?id=$room_data[id]" class="btn btn-sm p-2 btn-outline-dark  fw-bold">More details</a>
                             </div>
                         </div>
@@ -569,7 +575,7 @@ if (isset($_GET['reset_password'])) {
         data.append('email', reset_form.elements['email'].value);
         data.append('token', reset_form.elements['token'].value);
         data.append('pass', reset_form.elements['pass'].value);
-        data.append('reset_pass','');
+        data.append('reset_pass', '');
 
 
         var myModel = document.getElementById('resetModal');
@@ -581,12 +587,12 @@ if (isset($_GET['reset_password'])) {
         // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
         xhr.onload = function () {
-           if(this.responseText == 'failed'){
-            alert('error','Password Reset Failed!!'); 
-           }else{
-            alert('success','Account Reset Successfully !! '); 
-            reset_form.reset(); 
-           }
+            if (this.responseText == 'failed') {
+                alert('error', 'Password Reset Failed!!');
+            } else {
+                alert('success', 'Account Reset Successfully !! ');
+                reset_form.reset();
+            }
         }
 
         xhr.send(data);

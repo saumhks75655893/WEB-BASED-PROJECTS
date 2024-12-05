@@ -48,7 +48,9 @@
                     <div class="container-fluid flex-lg-column align-items-stretch">
                         <!-- Filtering -->
                         <h4 class="mt-2 text-white">FILTERS</h4>
-                        <button class="navbar-toggler bg-white shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#filterDropdown" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler bg-white shadow-none" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#filterDropdown" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse flex-column align-items-stretch mt-3" id="filterDropdown">
@@ -109,12 +111,16 @@
                 <!-- dynamic value of all the rooms -->
                 <?php
                 $room_res = select("SELECT * FROM `rooms` WHERE `status`=? AND `removed`=?", [1, 0], 'ii');
+                // on/off book_now button
+                $book_now = "";
 
+                if (!$setting_r['shutdown']) {
+                    $book_now = "<a href='#' class='btn btn-sm p-2 text-white  custom-bg fw-bold'>Book now</a>";
+                }
 
 
                 // $features_data = "";
-                while ($room_data = mysqli_fetch_assoc($room_res))
-                {
+                while ($room_data = mysqli_fetch_assoc($room_res)) {
 
                     //  get features of the rooms
                     $fea_q = mysqli_query($conn, "SELECT f.name from `features` f INNER JOIN `room_features` rfea ON f.id = rfea.features_id WHERE rfea.room_id = '$room_data[id]'");
@@ -137,12 +143,12 @@
                     }
 
                     // get thumbnail of the room
-
-                    $room_thumb = ROOM_IMG_PATH."thumbnail.jpg"; 
-                    $thumb_q = mysqli_query($conn, "SELECT * FROM `room_images` where `room_id`= '$room_data[id]' AND `thumb`='1'"); 
-                    if(mysqli_num_rows($thumb_q) > 0){
-                        $thumb_res = mysqli_fetch_assoc($thumb_q); 
-                        $room_thumb = ROOM_IMG_PATH.$thumb_res['image']; 
+                
+                    $room_thumb = ROOM_IMG_PATH . "thumbnail.jpg";
+                    $thumb_q = mysqli_query($conn, "SELECT * FROM `room_images` where `room_id`= '$room_data[id]' AND `thumb`='1'");
+                    if (mysqli_num_rows($thumb_q) > 0) {
+                        $thumb_res = mysqli_fetch_assoc($thumb_q);
+                        $room_thumb = ROOM_IMG_PATH . $thumb_res['image'];
 
                     }
                     // print room card
@@ -180,17 +186,21 @@
                                 <!-- price and books now and more details  -->
                                 <div class="col-md-2 text-center">
                                     <h6 class="mb-3"> ₹$room_data[price] per night</h6>
-                                    <a href="#" class="btn btn-sm p-2 text-white  custom-bg fw-bold mb-2 w-100">Book now</a>
-                                    <a href="room_details.php?id=$room_data[id]" class="btn btn-sm p-2 btn-outline-dark  fw-bold w-100" target="_blank">More details</a>
+                                    <div class='d-flex flex-column'> 
+                                        $book_now
+                                        <br>
+                                        <a href="room_details.php?id=$room_data[id]" class="btn btn-sm p-2 btn-outline-dark  fw-bold w-100" target="_blank">More details</a>
+                                    </div>
+                                 
                                 </div>
                             </div>
                         </div>
-                   data; 
+                   data;
                 }
 
 
                 ?>
-             
+
 
             </div>
         </div>

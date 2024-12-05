@@ -4,7 +4,6 @@ require('inc/db_config.php');
 error_reporting(0);
 adminLogin();
 
-
 // for marked as read
 if (isset($_GET['seen'])) {
     $frm_data = filteration($_GET);
@@ -41,9 +40,8 @@ if ($_GET['del']) {
             alert('error', 'Operation Failed !! ');
         }
     } else {
-        $query = "DELETE FROM `contact_us` WHERE `del`=?";
-        $value = [$frm_data['del']];
-        $res = deleteData($query, $value, 'i');
+        $query = "DELETE FROM `contact_us` WHERE `del`='$frm_data[del]'";
+        $res = mysqli_query($conn, $query); 
 
         if ($res) {
             alert('success', 'record deleted successfully !! ');
@@ -109,7 +107,7 @@ if ($_GET['del']) {
                             while ($row = mysqli_fetch_assoc($data)) {
                                 $seen = '';
                                 if ($row['seen'] != 1) {
-                                    $seen = "<a href='?seen=$row[sr_no]' class='btn  btn-warning rounded-pill btn-sm'>Mark As read</a>";
+                                    $seen .= "<a href='?seen=$row[sr_no]' class='btn  btn-warning rounded-pill btn-sm'>Mark As read</a>";
                                 }
                                 $seen .= "<a href='?del=$row[sr_no]' class='btn  btn-danger mt-2 rounded-pill btn-sm'>Delete</a>";
 

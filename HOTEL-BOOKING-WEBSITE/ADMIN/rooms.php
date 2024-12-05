@@ -29,26 +29,27 @@ adminLogin();
             <div class="card-body">
 
                 <div class="text-end mb-4">
-                    <button type="button" class="btn btn-dark btn-sm my-2 text-right" data-bs-toggle="modal" data-bs-target="#addRoom">
+                    <button type="button" class="btn btn-dark btn-sm my-2 text-right" data-bs-toggle="modal"
+                        data-bs-target="#addRoom">
                         <i class="bi bi-plus-circle me-2"></i>Add Rooms
                     </button>
                 </div>
                 <div class="table-responsive-lg border-top border-3" style="height: 450px; overflow-y:scroll;">
-                    <table class="table table-hover border-5">
+                    <table class="table table-hover border-5 bg-secondary">
                         <thead>
-                            <tr class="bg-dark text-light">
+                            <tr class="bg-dark text-light text-center">
                                 <th scope="col">#</th>
-                                <th scope="col" style="width: 15%;">Name</th>
-                                <th scope="col" style="width: 15%;">Area</th>
-                                <th scope="col" style="width: 15%;">Guests</th>
-                                <th scope="col" style="width: 15%;">Price</th>
-                                <th scope="col" style="width: 15%;">Quantity</th>
-                                <th scope="col" style="width: 15%;">Status</th>
-                                <th scope="col" style="width: 29%;">Action</th>
-                            </tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Area</th>
+                                <th scope="col">Guests</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                                </tr>
                         </thead>
 
-                        <tbody id="room-data">
+                        <tbody id="room-data" class="text-center align-items-center justify-content-center">
 
                         </tbody>
 
@@ -58,7 +59,8 @@ adminLogin();
         </div>
     </div>
     <!-- model for add rooms -->
-    <div class="modal modal-lg fade" id="addRoom" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal modal-lg fade" id="addRoom" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
 
             <form id="addRoomForm" autocomplete="off">
@@ -80,19 +82,23 @@ adminLogin();
                             </div>
                             <div class=" col-md-6 mb-3">
                                 <label class="form-label fw-bold">Adults(Max.)</label>
-                                <input type="number" min="1" name="adults" id="site_title_inp" class="form-control shadow-none mb-3" required>
+                                <input type="number" min="1" name="adults" id="site_title_inp"
+                                    class="form-control shadow-none mb-3" required>
                             </div>
                             <div class=" col-md-6 mb-3">
                                 <label class="form-label fw-bold">Children(Max.)</label>
-                                <input type="number" min="1" name="children" id="site_title_inp" class="form-control shadow-none mb-3" required>
+                                <input type="number" min="1" name="children" id="site_title_inp"
+                                    class="form-control shadow-none mb-3" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold">Price</label>
-                                <input type="number" min="1" name="price" class="form-control shadow-none mb-3" required>
+                                <input type="number" min="1" name="price" class="form-control shadow-none mb-3"
+                                    required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold">Quantity</label>
-                                <input type="number" min="1" name="quantity" class="form-control shadow-none mb-3" required>
+                                <input type="number" min="1" name="quantity" class="form-control shadow-none mb-3"
+                                    required>
                             </div>
 
                         </div>
@@ -102,7 +108,7 @@ adminLogin();
                             <div class="row">
                                 <?php
                                 $query = "SELECT * FROM `features`";
-                                $data  = mysqli_query($conn, $query);
+                                $data = mysqli_query($conn, $query);
                                 while ($res = mysqli_fetch_assoc($data)) {
                                     echo "<div class='col-lg-3 mb-1'>
                                                 <label>
@@ -120,7 +126,7 @@ adminLogin();
                             <div class="row">
                                 <?php
                                 $query = "SELECT * FROM `facilities`";
-                                $data  = mysqli_query($conn, $query);
+                                $data = mysqli_query($conn, $query);
                                 while ($res = mysqli_fetch_assoc($data)) {
                                     echo "<div class='col-lg-3 mb-1'>
                                                 <label>
@@ -139,7 +145,10 @@ adminLogin();
                         </div>
                         <!-- modal footer -->
                         <div class="modal-footer">
-                            <button type="reset" onclick="site_title.value = general_data.site_title , about_title.value = general_data.about" class="btn text-secondary outline-none border-none" data-bs-dismiss="modal">reset</button>
+                            <button type="reset"
+                                onclick="site_title.value = general_data.site_title , about_title.value = general_data.about"
+                                class="btn text-secondary outline-none border-none"
+                                data-bs-dismiss="modal">reset</button>
                             <button type="submit" class="btn btn-dark">submit</button>
                         </div>
                     </div>
@@ -150,7 +159,8 @@ adminLogin();
         </div>
     </div>
     <!-- model for edit rooms -->
-    <div class="modal modal-lg fade" id="editRoom" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal modal-lg fade" id="editRoom" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
 
             <form id="editRoomForm" autocomplete="off">
@@ -172,19 +182,23 @@ adminLogin();
                             </div>
                             <div class=" col-md-6 mb-3">
                                 <label class="form-label fw-bold">Adults(Max.)</label>
-                                <input type="number" min="1" name="adults" id="site_title_inp" class="form-control shadow-none mb-3" required>
+                                <input type="number" min="1" name="adults" id="site_title_inp"
+                                    class="form-control shadow-none mb-3" required>
                             </div>
                             <div class=" col-md-6 mb-3">
                                 <label class="form-label fw-bold">Children(Max.)</label>
-                                <input type="number" min="1" name="children" id="site_title_inp" class="form-control shadow-none mb-3" required>
+                                <input type="number" min="1" name="children" id="site_title_inp"
+                                    class="form-control shadow-none mb-3" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold">Price</label>
-                                <input type="number" min="1" name="price" class="form-control shadow-none mb-3" required>
+                                <input type="number" min="1" name="price" class="form-control shadow-none mb-3"
+                                    required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold">Quantity</label>
-                                <input type="number" min="1" name="quantity" class="form-control shadow-none mb-3" required>
+                                <input type="number" min="1" name="quantity" class="form-control shadow-none mb-3"
+                                    required>
                             </div>
 
                         </div>
@@ -194,7 +208,7 @@ adminLogin();
                             <div class="row">
                                 <?php
                                 $query = "SELECT * FROM `features`";
-                                $data  = mysqli_query($conn, $query);
+                                $data = mysqli_query($conn, $query);
                                 while ($res = mysqli_fetch_assoc($data)) {
                                     echo "<div class='col-lg-3 mb-1'>
                                                 <label>
@@ -212,7 +226,7 @@ adminLogin();
                             <div class="row">
                                 <?php
                                 $query = "SELECT * FROM `facilities`";
-                                $data  = mysqli_query($conn, $query);
+                                $data = mysqli_query($conn, $query);
                                 while ($res = mysqli_fetch_assoc($data)) {
                                     echo "<div class='col-lg-3 mb-1'>
                                                 <label>
@@ -232,7 +246,10 @@ adminLogin();
                         <input type="hidden" name='room_id'>
                         <!-- modal footer -->
                         <div class="modal-footer">
-                            <button type="reset" onclick="site_title.value = general_data.site_title , about_title.value = general_data.about" class="btn text-secondary outline-none border-none" data-bs-dismiss="modal">close</button>
+                            <button type="reset"
+                                onclick="site_title.value = general_data.site_title , about_title.value = general_data.about"
+                                class="btn text-secondary outline-none border-none"
+                                data-bs-dismiss="modal">close</button>
                             <button type="submit" class="btn btn-dark">Edit</button>
                         </div>
                     </div>
@@ -245,7 +262,8 @@ adminLogin();
 
     <!-- Manage room image modal -->
 
-    <div class="modal fade" id="Room-images" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="Room-images" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -261,13 +279,15 @@ adminLogin();
                     <div class="border-bottom border-3 pb-3 mb-3">
                         <form id="add_image_form">
                             <label class="form-label fw-bold">Add image</label>
-                            <input type="file" name="image" id="" accept=".jpg, .jpeg, .png, .webp" class="form-control shadow-none mb-3" required>
+                            <input type="file" name="image" id="" accept=".jpg, .jpeg, .png, .webp"
+                                class="form-control shadow-none mb-3" required>
                             <button class="btn btn-info shadow-none outline-none fw-bold text-dark">Add</button>
                             <input type="hidden" name='room_id'>
                         </form>
                     </div>
                     <!-- image table -->
-                    <div class="table-responsive-lg bg-dark text-white border-top border-3" style="height: 350px; overflow-y:scroll;">
+                    <div class="table-responsive-lg bg-dark text-white border-top border-3"
+                        style="height: 350px; overflow-y:scroll;">
                         <table class="table table-hover border-5 ">
                             <thead>
                                 <tr class="bg-dark text-light sticky-top">
