@@ -111,13 +111,6 @@
                 <!-- dynamic value of all the rooms -->
                 <?php
                 $room_res = select("SELECT * FROM `rooms` WHERE `status`=? AND `removed`=?", [1, 0], 'ii');
-                // on/off book_now button
-                $book_now = "";
-
-                if (!$setting_r['shutdown']) {
-                    $book_now = "<a href='#' class='btn btn-sm p-2 text-white  custom-bg fw-bold'>Book now</a>";
-                }
-
 
                 // $features_data = "";
                 while ($room_data = mysqli_fetch_assoc($room_res)) {
@@ -151,6 +144,18 @@
                         $room_thumb = ROOM_IMG_PATH . $thumb_res['image'];
 
                     }
+                    // on/off book_now button
+                    $book_now = "";
+
+                    if (!$setting_r['shutdown']) {
+                        $login = 0;
+                        if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+                            $login = 1;
+                        }
+                        $book_now = "<button  onclick='checkLoginToBook($login,$room_data[id])' class='btn btn-sm p-2 text-white custom-bg fw-bold'>Book now </button>";
+
+                    }
+
                     // print room card
                     echo <<<data
                         <div class="card mb-3 border-0 shadow ">

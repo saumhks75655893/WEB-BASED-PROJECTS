@@ -1,56 +1,58 @@
 <?php
 require('inc/essentials.php');
 require('inc/db_config.php');
-error_reporting(0);
+error_reporting(E_ALL); // Enable error reporting for debugging
+ini_set('display_errors', 1);
 adminLogin();
 
-// for marked as read
+// Mark as Read
 if (isset($_GET['seen'])) {
     $frm_data = filteration($_GET);
-    if ($frm_data['seen'] == 'all') {
+    if ($frm_data['seen'] === 'all') {
         $query = "UPDATE `contact_us` SET `seen`=?";
         $value = [1];
         $res = update($query, $value, 'i');
         if ($res) {
-            alert('success', 'Marked ALL as read !! ');
+            alert('success', 'Marked ALL as read!');
         } else {
-            alert('error', 'Operation failed !! ');
+            alert('error', 'Operation failed!');
         }
-    } else {
-        $query = "UPDATE `contact_us` SET `seen`=? where `sr_no`=?";
+    } elseif (is_numeric($frm_data['seen'])) {
+        $query = "UPDATE `contact_us` SET `seen`=? WHERE `sr_no`=?";
         $value = [1, $frm_data['seen']];
         $res = update($query, $value, 'ii');
         if ($res) {
-            alert('success', 'Marked as read !! ');
+            alert('success', 'Marked as read!');
         } else {
-            alert('error', 'Operation failed !! ');
+            alert('error', 'Operation failed!');
         }
     }
 }
-// for delete
 
-if ($_GET['del']) {
+// Delete
+if (isset($_GET['del'])) {
     $frm_data = filteration($_GET);
 
-    if ($frm_data['del'] == 'all') {
+    if ($frm_data['del'] === 'all') {
         $query = "DELETE FROM `contact_us`";
         if (mysqli_query($conn, $query)) {
-            alert('success', 'All record Deleted !! ');
+            alert('success', 'All records deleted!');
         } else {
-            alert('error', 'Operation Failed !! ');
+            alert('error', 'Operation failed!');
         }
-    } else {
-        $query = "DELETE FROM `contact_us` WHERE `del`='$frm_data[del]'";
-        $res = mysqli_query($conn, $query); 
-
+    } elseif (is_numeric($frm_data['del'])) {
+        $query = "DELETE FROM `contact_us` WHERE `sr_no`=?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $frm_data['del']);
+        $res = $stmt->execute();
         if ($res) {
-            alert('success', 'record deleted successfully !! ');
+            alert('success', 'Record deleted successfully!');
         } else {
-            alert('error', 'operation failed');
+            alert('error', 'Operation failed!');
         }
+        $stmt->close();
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -59,31 +61,27 @@ if ($_GET['del']) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - USER QUERIES</title>
-    <?php require('inc/links.php') ?>
+    <title>Admin Panel - User Queries</title>
+    <?php require('inc/links.php'); ?>
 </head>
 
 <body class="bg-light">
+    <?php require('inc/header.php'); ?>
 
-    <?php
-    require('inc/header.php');
-    ?>
-    <!-- Heading for Setting tab -->
     <div class="col-lg-10 p-4 ms-auto">
-        <h3 class="mb-4">USER QUERIES</h3>
+        <h3 class="mb-4">User Queries</h3>
 
         <div class="text-end mb-4">
-            <a href="?seen=all" class="btn btn-sm  bg-warning rounded-pill fw-bold shadow-none">
+            <a href="?seen=all" class="btn btn-sm bg-warning rounded-pill fw-bold shadow-none">
                 <i class="bi bi-check2-all me-1"></i>Mark All Read
             </a>
             <a href="?del=all" class="btn btn-sm bg-danger text-white rounded-pill fw-bold">
-                <i class="bi bi-trash3 me-1"></i> All Delete
+                <i class="bi bi-trash3 me-1"></i>Delete All
             </a>
         </div>
-        <!--General setting sections  -->
+
         <div class="card border-0 shadow-sm mb-4">
             <div class="card-body">
-
                 <div class="table-responsive-md border-top border-3" style="height: 420px; overflow-y:scroll;">
                     <table class="table table-hover border-5">
                         <thead class="sticky-top">
@@ -97,7 +95,6 @@ if ($_GET['del']) {
                                 <th scope="col" style="width: 20%;">Action</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             <?php
                             $query = "SELECT * FROM `contact_us` ORDER BY `sr_no` DESC";
@@ -105,36 +102,39 @@ if ($_GET['del']) {
                             $i = 1;
 
                             while ($row = mysqli_fetch_assoc($data)) {
+                                $row['name'] = htmlspecialchars($row['name']);
+                                $row['email'] = htmlspecialchars($row['email']);
+                                $row['subject'] = htmlspecialchars($row['subject']);
+                                $row['message'] = htmlspecialchars($row['message']);
                                 $seen = '';
-                                if ($row['seen'] != 1) {
-                                    $seen .= "<a href='?seen=$row[sr_no]' class='btn  btn-warning rounded-pill btn-sm'>Mark As read</a>";
-                                }
-                                $seen .= "<a href='?del=$row[sr_no]' class='btn  btn-danger mt-2 rounded-pill btn-sm'>Delete</a>";
 
-                                echo <<<query
-                                <tr> 
-                                    <td> $i </td>
-                                    <td> $row[name] </td>
-                                    <td> $row[email] </td>
-                                    <td> $row[subject] </td>
-                                    <td> $row[message] </td>
-                                    <td> $row[date] </td>
-                                    <td> $seen</td>
+                                if ($row['seen'] != 1) {
+                                    $seen .= "<a href='?seen={$row['sr_no']}' class='btn btn-warning rounded-pill btn-sm'>Mark as Read</a>";
+                                }
+                                $seen .= "<a href='?del={$row['sr_no']}' class='btn btn-danger mt-2 rounded-pill btn-sm'>Delete</a>";
+
+                                echo <<<HTML
+                                <tr>
+                                    <td>{$i}</td>
+                                    <td>{$row['name']}</td>
+                                    <td>{$row['email']}</td>
+                                    <td>{$row['subject']}</td>
+                                    <td>{$row['message']}</td>
+                                    <td>{$row['date']}</td>
+                                    <td>{$seen}</td>
                                 </tr>
-                                query;
+                                HTML;
                                 $i++;
                             }
                             ?>
-
                         </tbody>
-
                     </table>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- for the click and stick for that time till the cursor is not changing it's place -->
-        <?php require('inc/scripts.php') ?>
+    <?php require('inc/scripts.php'); ?>
 </body>
 
 </html>

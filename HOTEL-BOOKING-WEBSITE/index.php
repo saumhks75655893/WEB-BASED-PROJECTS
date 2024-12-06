@@ -224,7 +224,12 @@
                 $book_now = "";
 
                 if (!$setting_r['shutdown']){
-                    $book_now = "<a href='#' class='btn btn-sm p-2 text-white  custom-bg fw-bold'>Book now</a>";
+                    $login = 0; 
+                    if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+                        $login = 1; 
+                    }
+                    $book_now = "<button  onclick='checkLoginToBook($login,$room_data[id])' class='btn btn-sm p-2 text-white custom-bg fw-bold'>Book now</button>";
+                    
                 }
                     // print room card
                     echo <<<data

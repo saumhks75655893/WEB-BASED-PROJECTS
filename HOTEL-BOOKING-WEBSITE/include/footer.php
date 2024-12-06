@@ -79,7 +79,13 @@
                 alert('error', 'Invalid Password!');
             }
             else {
-                window.location = window.location.pathname;
+                let fileurl = window.location.href.split('/').pop().split('?').shift();
+                if (fileurl = 'room_details.php') {
+                    window.location = window.location.href;
+                }
+                else {
+                    window.location = window.location.pathname;
+                }
             }
         }
 
@@ -185,8 +191,8 @@
                 alert('error', 'Password Reset failed : Server Down !!');
             }
             else {
-              alert('success', 'Reset link sent to email!')
-              forgot_form.reset(); 
+                alert('success', 'Reset link sent to email!')
+                forgot_form.reset();
             }
         }
 
@@ -236,5 +242,14 @@
     // Call the function
     setActive();
 
+
+    // Check Login to Proceed to book page
+    function checkLoginToBook(status, room_id) {
+        if (status) {
+            window.location.href = 'confirm_booking.php?id=' + room_id;
+        } else {
+            alert('error', 'Please login to book room !');
+        }
+    }
 
 </script>
