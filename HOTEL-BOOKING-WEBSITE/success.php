@@ -84,6 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Send email confirmation
         $mail = new PHPMailer(true);
 
+        // fetch data from 
+
         try {
             // Email server settings
             $mail->isSMTP();
@@ -106,11 +108,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <p>Thank you for booking with The King Hotel. Here are your booking details:</p>
                 <ul>
                     <li><strong>Booking ID:</strong> {$bookingDetails['booking_id']}</li>
-                    <li><strong>Room No:</strong> {10}</li>
                     <li><strong>Transaction ID:</strong> {$razorpayPaymentId}</li>
                     <li><strong>Room Name:</strong> $roomName</li>
                     <li><strong>Check-in Date:</strong> $checkin</li>
                     <li><strong>Check-out Date:</strong> $checkout</li>
+                </ul>
+                <h4 style='color:#48cae4;'> Note : You will get you room no when you reached at the hotel !!!! </h4>
+                <ul style='text-align:right;'>
+                        <h4> Thanks!!! </h4>
+                        <h4> You're Welcome !! </h4>
                 </ul>
                 <p>We look forward to hosting you!</p>
                 <p>Regards,<br>The King Hotel Team</p>
