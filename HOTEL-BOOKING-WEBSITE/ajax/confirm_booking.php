@@ -41,6 +41,7 @@ if (isset($_POST['check_availability'])) {
 
         $_SESSION['room']['payment'] = $payment;
         $_SESSION['room']['available'] = true;
+        $_SESSION['room']['name'];
 
 
 

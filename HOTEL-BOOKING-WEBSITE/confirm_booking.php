@@ -70,7 +70,6 @@
             $login = 1;
         }
         $book_now = "<button  onclick='checkLoginToBook($login,$room_data[id])' class='btn btn-sm p-2 text-white custom-bg fw-bold'>Book now </button>";
-
     }
 
     // store value of the booking
@@ -79,7 +78,7 @@
         "name" => $room_data['name'],
         "price" => $room_data['price'],
         "payment" => null,
-        "   " => false,
+        "" => false,
     ];
 
     $user_res = select(
@@ -91,11 +90,8 @@
     $user_data = mysqli_fetch_assoc($user_res);
 
     ?>
-    <!-- hotel room view -->
-
-
-    <!-- room design -->
-
+    <!-- hotel room booking view -->
+    <!-- room booking design -->
 
     <div class="container">
         <div class="row">
@@ -137,7 +133,7 @@
             <div class="col-lg-5 col-md-12 px-4">
                 <div class="card mb-4 border-0 shadow-sm rounded-3">
                     <div class="card-body">
-                        <form action="#" id="booking_form">
+                        <form action="pay_now.php" id="booking_form" method="POST">
                             <h6 class="mb-3">BOOKING DETAILS</h6>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -179,9 +175,7 @@
                                     </div>
                                     <h6 class="text-danger mb-3" id="pay_info">Provide check-in & check-out dates !!
                                     </h6>
-                                    <button name="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1"
-                                        disabled>Pay
-                                        now</button>
+                                    <button name="pay_now" class="btn w-100 text-white custom-bg shadow-none mb-1" target="_blank" disabled>Pay now</button>
                                 </div>
 
                             </div>
@@ -263,46 +257,48 @@
             function check_availability() {
                 let checkin_val = booking_form.elements['checkin'].value;
                 let checkout_val = booking_form.elements['checkout'].value;
+                let user_name = booking_form.elements['name'].value; 
 
                 booking_form.elements['pay_now'].setAttribute('disabled', true); arguments
 
                 if (checkin_val != '' && checkout_val != '') {
-                    pay_info.classList.add('d-none'); 
-                    pay_info.classList.replace('text-dark','text-danger'); 
-                    info_loader.classList.remove('d-none'); 
-                    
+                    pay_info.classList.add('d-none');
+                    pay_info.classList.replace('text-dark', 'text-danger');
+                    info_loader.classList.remove('d-none');
+
                     let data = new FormData();
 
                     data.append('check_availability', '');
                     data.append('check_in', checkin_val);
                     data.append('check_out', checkout_val);
+                    data.append('name',user_name); 
 
                     let xhr = new XMLHttpRequest();
                     xhr.open("POST", "ajax/confirm_booking.php", true);
                     // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
                     xhr.onload = function () {
-                      let data = JSON.parse(this.responseText); 
-                      if(data.status == 'checkin_checkout_equal'){
-                        pay_info.innerText = 'You cannot check-out on the say day!'
-                      }
-                      else if(data.status == 'check_out_earlier'){
-                        pay_info.innerText = 'Checkout date is earlier than checkin date !!'; 
-                      }
-                      else if(data.status == 'check_in_earlier'){
-                        pay_info.innerText = "Check_in date is earlier than today's date!! "; 
-                      }
-                      else if(data.status == "unavailable"){
-                        pay_info.innerText = 'Room is not available for this check-in date!'; 
-                      }else{
-                        pay_info.innerHTML = "No. of days : "+data.days+"<br>Total Amount to Pay : ₹"+data.payment; 
-                        pay_info.classList.replace('text-danger','text-dark'); 
-                        booking_form.elements['pay_now'].removeAttribute('disabled')
-                      }
+                        let data = JSON.parse(this.responseText);
+                        if (data.status == 'checkin_checkout_equal') {
+                            pay_info.innerText = 'You cannot check-out on the say day!'
+                        }
+                        else if (data.status == 'check_out_earlier') {
+                            pay_info.innerText = 'Checkout date is earlier than checkin date !!';
+                        }
+                        else if (data.status == 'check_in_earlier') {
+                            pay_info.innerText = "Check_in date is earlier than today's date!! ";
+                        }
+                        else if (data.status == "unavailable") {
+                            pay_info.innerText = 'Room is not available for this check-in date!';
+                        } else {
+                            pay_info.innerHTML = "No. of days : " + data.days + "<br>Total Amount to Pay : ₹" + data.payment;
+                            pay_info.classList.replace('text-danger', 'text-dark');
+                            booking_form.elements['pay_now'].removeAttribute('disabled')
+                        }
                     }
-                    pay_info.classList.remove('d-none'); 
-                    info_loader.classList.add('d-none'); 
-                    
+                    pay_info.classList.remove('d-none');
+                    info_loader.classList.add('d-none');
+
                     xhr.send(data);
 
                 }
