@@ -34,7 +34,7 @@ adminLogin();
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table table-hover border text-center bg-secondary"">
+                    <table class="table table-hover border text-center bg-secondary">
                         <thead>
                             <tr class=" bg-dark text-light">
                         <th scope="col">#</th>

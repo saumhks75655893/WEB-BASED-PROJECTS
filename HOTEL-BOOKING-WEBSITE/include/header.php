@@ -63,8 +63,8 @@ if($setting_r['shutdown']){
                                 <h6>$_SESSION[uName]</h6>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-lg-none">
-                                <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                                <li><a class="dropdown-item" href="bookings.php">Bookings</a></li>
+                                <li><a class="dropdown-item" href="profile.php?id=$_SESSION[uId]">Profile</a></li>
+                                <li><a class="dropdown-item" href="user_bookings.php?id=$_SESSION[uId]">Bookings</a></li>
                                 <li><a class="dropdown-item" href="logout.php">LogOut</a></li>
                             </ul>
                         </div>
